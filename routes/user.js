@@ -77,17 +77,25 @@ router.post('/new', function(req, res) {
  *  login the current user
  */
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/loginSuccess',
-  failureRedirect: '/loginFailure'
-}), function(req, res) {
-  //empty callback
-});
+  successRedirect: '/login/success',
+  failureRedirect: '/login/failure'
+}), function(req, res) {});
 
-router.get('/loginSuccess', function(req, res, next) {
+
+/**
+ * ROUTE: GET /login/success
+ *  redirect a successful login back to the same view
+ */
+router.get('/login/success', function(req, res, next) {
   res.redirect('back');
 });
 
-router.get('/loginFailure', function(req, res, next) {
+
+/**
+ * ROUTE: GET /login/failure
+ *  redirect a failed login back to the same view
+ */
+router.get('/login/failure', function(req, res, next) {
   res.redirect('back');
 });
 
