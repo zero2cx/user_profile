@@ -1,0 +1,33 @@
+<% include ./partials/page-header %>
+
+    <div class="container user-form">
+      <div class="row text-center">
+        
+        <h1>new user form</h1>
+
+        <form id="new-user-form" name="new_user_form" action="/new" method="POST">
+
+          <div class="form-group">
+            <input class="form-control" type="text" name="username" placeholder="choose username">
+          </div>
+
+          <div class="form-group">
+            <input id="password-input" class="form-control" type="password" name="password" placeholder="choose password">
+          </div>
+
+          <div class="form-group">
+            <input id="confirm-password-input" class="form-control" type="password" name="confirm_password" placeholder="confirm password">
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block" onclick="javascript:submitNewUserForm()">submit</button>
+          </div>
+
+        </form>
+
+        <a href="/index">cancel</a>
+
+      </div>
+    </div>
+
+<% include ./partials/page-footer %>

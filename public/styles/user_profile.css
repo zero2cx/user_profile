@@ -1,0 +1,236 @@
+/**
+ * file: public/styles/user_profile.css
+ */
+
+/**,
+*::before,
+*::after {
+  font-size: 0.8em;
+}
+*/
+
+.red {
+  border: 1px solid red !important;
+}
+
+.orange {
+  border: 1px solid orange !important;
+}
+
+.yellow {
+  border: 1px solid yellow !important;
+}
+
+.green {
+  border: 1px solid green !important;
+}
+
+.blue {
+  border: 1px solid blue !important;
+}
+
+.purple {
+  border: 1px solid purple !important;
+}
+
+.grey {
+  border: 1px solid grey !important;
+}
+
+.black {
+  border: 1px solid black !important;
+}
+
+* {
+  border: 1px solid black !important;
+}
+
+.row {
+  border: 1px solid orange !important;
+}
+
+div[class^="col-"],
+div[class*=" col-"] {
+  border: 1px solid green;
+}
+
+.hidden {
+  display: none;
+}
+
+/****  DEBUG ONLY  *******************************/
+
+.debug-container {
+  margin: 0 auto;
+  padding: 6px;
+  width: 270px;
+  border: 2px solid green;
+  background-color: lightgray;
+}
+
+.debug-selector {
+  line-height: 0.8;
+}
+
+#hide-debug-button {
+  display: none;
+}
+
+#debug-form {
+  margin-bottom: 6px;
+  display: none;
+}
+
+
+/****  DEBUG ONLY  *******************************/
+
+body {
+  font-family: Cabin;
+  padding-top: 50px;
+}
+
+@media (max-width: 767px) {
+  .form-container {
+    width: 270px;
+  }
+  img.avatar-thumbnail {
+    margin-top: 10px;
+  }
+}
+
+.user-form {
+  margin-top: 10px;
+  max-width: 270px;
+}
+
+.form-container,
+.user-form-wide {
+  margin-top: 10px;
+  max-width: 520px;
+}
+
+.profile-form {
+  margin-top: 6px;
+}
+
+.debug-control {}
+
+.avatar-editable {}
+
+.avatar-thumbnail {
+  margin: 30px auto 0 auto;
+  width: 136px;
+  height: 136px;
+  cursor: pointer;
+}
+
+.large-gutter {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.no-gutter {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.inline {
+  display: inline;
+}
+
+.dimmed {
+  opacity: 0.7;
+}
+
+i.done-icon {
+  display: none;
+  color: green;
+  cursor: pointer;
+}
+
+i.edit-icon,
+i.undo-icon,
+i.admin-icon {
+  display: none;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.suspension {
+  font-style: italic;
+  margin: 0 auto;
+  color: red;
+}
+
+textarea.form-control {
+  resize: none;
+}
+
+button.form-button {
+  display: none;
+  margin: 6px 6px;
+  width: 124px;
+}
+
+
+/*****************************************/
+
+li.nested-list-header {
+  cursor: pointer;
+}
+
+ul.nested-list {
+  max-height: 300px;
+  overflow-y: scroll;
+}
+
+ul.nested-list ul.list-children {
+  display: none;
+  /*margin-left: 46px;*/
+  margin-right: 18px;
+  white-space: nowrap;
+  list-style-type: none;
+}
+
+ul.nested-list span.arrow-right,
+ul.nested-list span.arrow-down {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+ul.nested-list span.arrow-right {
+  margin-left: 2px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid #337ab7;
+}
+
+ul.nested-list span.arrow-down {
+  border-right: 5px solid transparent;
+  border-left: 5px solid transparent;
+  border-top: 8px solid #337ab7;
+}
+
+ul.nested-list li.list-child:hover {
+  font-weight: bold;
+}
+
+ul.nested-list li.list-child {
+  margin-bottom: 2px;
+}
+
+ul.nested-list li.list-child>a {
+  color: #202020;
+  text-decoration: none;
+}
+
+ul.nested-list li.list-child.item-green>a {
+  color: green;
+}
+
+ul.nested-list li.list-child.item-red>a {
+  color: #d03030;
+}

@@ -1,0 +1,35 @@
+<!--<ul class="nav nav-tabs">-->
+<ul class="nav navbar-nav">
+  <li class="nested-list-header"><a onclick="$(this).next().toggle()">Site Members <span class="caret"></span></a>
+    <ul class="dropdown-menu nested-list">
+      <li class="list-parent"><a onclick="$(this).next().toggle(); $(this).children().toggleClass('arrow-right').toggleClass('arrow-down')"><span class="arrow-right"></span>Users</a>
+        <ul class="list-children">
+<!--< %= currentUser %>-->
+<% users.forEach(function(user) { %>
+  <% if (!user.is_admin && !user.is_suspended) { %>
+          <li class="list-child"><a href="<%= user._id %>"><%= user.username %></a></li>
+  <% } %>
+<% }) %>
+        </ul><!-- /list-children -->
+      </li><!-- /list-parent -->
+      <li  class="list-parent"><a id="admin-item" onclick="$(this).next().toggle(); $(this).children().toggleClass('arrow-right').toggleClass('arrow-down')"><span class="arrow-right"></span>Admins</a>
+        <ul class="list-children">
+<% users.forEach(function(user) { %>
+  <% if (user.is_admin && !user.is_suspended) { %>
+          <li class="list-child item-green"><a href="<%= user._id %>"><%= user.username %></a></li>
+  <% } %>
+<% }) %>
+        </ul><!-- /list-children -->
+      </li><!-- /list-parent -->
+      <li class="list-parent"><a id="suspended-item" onclick="$(this).next().toggle(); $(this).children().toggleClass('arrow-right').toggleClass('arrow-down')"><span class="arrow-right"></span>Suspended</a>
+        <ul class="list-children">
+<% users.forEach(function(user) { %>
+  <% if (user.is_suspended) { %>
+          <li class="list-child item-red"><a href="<%= user._id %>"><%= user.username %></a></li>
+  <% } %>
+<% }) %>
+        </ul><!-- /list-children -->
+      </li><!-- /list-parent -->
+    </ul><!-- /dropdown-menu /nested-list -->
+  </li><!-- /nested-list-header -->
+</ul><!-- /nav /navbar-nav -->

@@ -1,0 +1,14 @@
+<% include ./partials/page-header %>
+
+    <div class="container thumbnail black" style="margin-top: 10px; width: 20%; background-color: lightgray;">
+  
+      <h1>user list</h1>
+
+      <ul>
+<% users.forEach(function(user) { %>
+        <li><a href="/<%= user.id %>"><%= user.username %></a></li>
+<% }) %>
+      </ul>
+    </div>
+
+<% include ./partials/page-footer %>
