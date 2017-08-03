@@ -18,23 +18,6 @@ router.get('/', function(req, res) {
 
 
 /**
- * ROUTE: GET /index
- *  display all users
- */
-router.get('/index', function(req, res) {
-  User.find({}, function(err, users) {
-    if (err) {
-      console.error('1 ** error: [%s] %s', filename, err);
-      res.redirect('/');
-    }
-    res.render('index', {
-      users: users
-    });
-  });
-});
-
-
-/**
  * ROUTE: GET /new
  *  display new user form
  */
