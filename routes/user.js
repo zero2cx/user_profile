@@ -77,10 +77,18 @@ router.post('/new', function(req, res) {
  *  login the current user
  */
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/index',
-  failureRedirect: '/login'
+  successRedirect: '/loginSuccess',
+  failureRedirect: '/loginFailure'
 }), function(req, res) {
   //empty callback
+});
+
+router.get('/loginSuccess', function(req, res, next) {
+  res.redirect('back');
+});
+
+router.get('/loginFailure', function(req, res, next) {
+  res.redirect('back');
 });
 
 
@@ -90,7 +98,8 @@ router.post('/login', passport.authenticate('local', {
  */
 router.get('/logout', function(req, res) {
   req.logout();
-  res.redirect('index');
+  // res.redirect(req.get('referer'));
+  res.redirect('back');
 });
 
 
