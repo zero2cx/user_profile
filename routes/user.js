@@ -2,11 +2,16 @@
  * file: routes/user.js
  */
 
+
+/**
+ * import modules and setup global variables
+ */
 var filename = __filename.split("/").pop();
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var User = require('../models/user');
+
 
 /**
  * ROUTE: GET /
@@ -112,4 +117,8 @@ router.get('/:id', function(req, res) {
   });
 });
 
+
+/**
+ * export our local instance of express.Router()
+ */
 module.exports = router;
