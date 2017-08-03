@@ -2,7 +2,12 @@
  * file: public/scripts/user_profile.js
  */
 
-// set dom-variables for the profile-form
+
+/**
+ * set up global-variables and dom-elements
+ */
+
+/* the dom-elements of the profile-form */
 var iconAdmin = $('#admin-icon');
 var bannerUsername = $('#username-banner');
 var bannerSuspension = $('#suspension-banner');
@@ -16,18 +21,21 @@ var buttonReinstate = $('#reinstate-button');
 var buttonSuspend = $('#suspend-button');
 var buttonReset = $('#reset-button');
 var buttonSave = $('#save-button');
-// set dom-variables for the admin-form
+/* the dom-elements of the admin-form */
 var adminForm = $('#admin-form');
 var adminAction = $('#admin-action');
-// set dom-variables for the registration-form
+/* the dom-elements of the registration-form */
 var formNewUser = $('#new-user-form');
 var inputPassword = $('#password-input');
 var inputConfirmPassword = $('#confirm-password-input');
-
-// set global-variables
+/* set global-variables */
 var adminCode = '0000';
 var profileUser;
 
+
+/**
+ * do pre-validation before submitting the new-user-form
+ */
 function submitNewUserForm() {
   if (inputPassword.val() === inputConfirmPassword.val()) {
     formNewUser.submit();
