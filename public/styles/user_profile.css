@@ -158,7 +158,7 @@ textarea.form-control {
 }
 
 button.form-button {
-  display: none;
+  /*display: none;*/
   margin: 6px 6px;
   width: 124px;
 }
