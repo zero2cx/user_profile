@@ -22,7 +22,7 @@ var buttonSave = $('#save-button');
 /* declare the dom-elements of the admin-form */
 var adminForm = $('#admin-form');
 var adminAction = $('#admin-action');
-/* the dom-elements of the registration-form */
+/* declare the dom-elements of the registration-form */
 var formNewUser = $('#new-user-form');
 var inputPassword = $('#password-input');
 var inputConfirmPassword = $('#confirm-password-input');
