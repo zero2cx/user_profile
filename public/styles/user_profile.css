@@ -177,7 +177,14 @@ ul.nested-list {
 
 ul.nested-list ul.list-children {
   display: none;
-  /*margin-left: 46px;*/
+}
+
+ul.nested-list ul.list-children-open {
+  display: block;
+}
+
+ul.nested-list ul.list-children,
+ul.nested-list ul.list-children-open {
   margin-right: 18px;
   white-space: nowrap;
   list-style-type: none;

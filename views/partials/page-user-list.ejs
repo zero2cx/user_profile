@@ -2,8 +2,8 @@
 <ul class="nav navbar-nav">
   <li class="nested-list-header"><a onclick="$(this).next().toggle()">Site Members <span class="caret"></span></a>
     <ul class="dropdown-menu nested-list">
-      <li class="list-parent"><a onclick="$(this).next().toggle(); $(this).children().toggleClass('arrow-right').toggleClass('arrow-down')"><span class="arrow-right"></span>Users</a>
-        <ul class="list-children">
+      <li class="list-parent"><a onclick="$(this).next().toggle(); $(this).children().toggleClass('arrow-right').toggleClass('arrow-down')"><span class="arrow-down"></span>Users</a>
+        <ul class="list-children-open">
 <!--< %= currentUser %>-->
 <% users.forEach(function(user) { %>
   <% if (!user.is_admin && !user.is_suspended) { %>
