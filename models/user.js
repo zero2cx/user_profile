@@ -2,9 +2,12 @@
  * file: models/user.js
  */
 
+/**
+ * import modules and declare global variables
+ */
 var mongoose = require("mongoose");
-var passportLocalMongoose = require("passport-local-mongoose");
-
+var passportLocalMongoose = require('passport-local-mongoose');
+/* declare the schema for the user-model */
 var UserSchema = new mongoose.Schema({
   username: String,
   avatar_url: {
@@ -28,7 +31,10 @@ var UserSchema = new mongoose.Schema({
     default: false
   }
 });
+/* add user-authentication functionality to the schema */
+UserSchema.plugin(passportLocalMongoose);
 
-UserSchema.plugin(passportLocalMongoose)
-
-module.exports = mongoose.model("User", UserSchema);
+/**
+ * generate and export the 'User' model
+ */
+module.exports = mongoose.model('User', UserSchema);
