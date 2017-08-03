@@ -38,7 +38,7 @@
                 <span class="pull-right">
                   <i class="undo-icon inline fa fa-undo" aria-hidden="true" title="undo change"></i>
                 </span>
-<% if (user.username === 'LasagnaCat' && !user.is_suspended) { %> 
+<% if (currentUser && user.username === currentUser.username && !user.is_suspended) { %> 
                 <input id="first-name-input" class="form-control" type="text" placeholder="first name" value="<%= user.first_name %>">
 <% } else { %>
                 <input id="first-name-input" class="form-control" type="text" placeholder="first name" value="<%= user.first_name %>" readonly>
@@ -50,7 +50,7 @@
                 <span class="pull-right">
                   <i class="undo-icon inline fa fa-undo" aria-hidden="true" title="undo change"></i>
                 </span>
-<% if (user.username === 'LasagnaCat' && !user.is_suspended) { %> 
+<% if (currentUser && user.username === currentUser.username && !user.is_suspended) { %> 
                 <input id="last-name-input" class="form-control" type="text" placeholder="last name" value="<%= user.last_name %>">
 <% } else { %>
                 <input id="last-name-input" class="form-control" type="text" placeholder="last name" value="<%= user.last_name %>" readonly>
@@ -62,7 +62,7 @@
                 <span class="pull-right">
                   <i class="undo-icon inline fa fa-undo" aria-hidden="true" title="undo change"></i>
                 </span>
-<% if (user.username === 'LasagnaCat' && !user.is_suspended) { %> 
+<% if (currentUser && user.username === currentUser.username && !user.is_suspended) { %> 
                 <input id="email-address-input" class="form-control" type="text" placeholder="email address" value="<%= user.email_address %>">
 <% } else { %>
                 <input id="email-address-input" class="form-control" type="text" placeholder="email address" value="<%= user.email_address %>" readonly>
@@ -74,7 +74,7 @@
                 <span class="pull-right">
                   <i class="undo-icon inline fa fa-undo" aria-hidden="true" title="undo change"></i>
                 </span>
-<% if (user.username === 'LasagnaCat' && !user.is_suspended) { %> 
+<% if (currentUser && user.username === currentUser.username && !user.is_suspended) { %> 
                 <textarea id="biography-input" class="form-control" rows="4" placeholder="biography"><%= user.biography %></textarea>
 <% } else { %>
                 <textarea id="biography-input" class="form-control" rows="4" placeholder="biography" readonly><%= user.biography %></textarea>
