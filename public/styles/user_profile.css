@@ -41,22 +41,13 @@
   border: 1px solid black !important;
 }
 
-* {
-  border: 1px solid black !important;
-}
+/* * { border: 1px solid black !important; }*/
 
-.row {
-  border: 1px solid orange !important;
-}
+/*.row { border: 1px solid orange !important; }*/
 
-div[class^="col-"],
-div[class*=" col-"] {
-  border: 1px solid green;
-}
+/*div[class^="col-"], div[class*=" col-"] { border: 1px solid green; }*/
 
-.hidden {
-  display: none;
-}
+/*.hidden { display: none; }*/
 
 /****  DEBUG ONLY  *******************************/
 
