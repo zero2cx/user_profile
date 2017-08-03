@@ -5,7 +5,7 @@
 /**
  * declare dom-elements and global variables
  */
-/* the dom-elements of the profile-form */
+/* declare the dom-elements of the profile-form */
 var iconAdmin = $('#admin-icon');
 var bannerUsername = $('#username-banner');
 var bannerSuspension = $('#suspension-banner');
@@ -19,14 +19,14 @@ var buttonReinstate = $('#reinstate-button');
 var buttonSuspend = $('#suspend-button');
 var buttonReset = $('#reset-button');
 var buttonSave = $('#save-button');
-/* the dom-elements of the admin-form */
+/* declare the dom-elements of the admin-form */
 var adminForm = $('#admin-form');
 var adminAction = $('#admin-action');
 /* the dom-elements of the registration-form */
 var formNewUser = $('#new-user-form');
 var inputPassword = $('#password-input');
 var inputConfirmPassword = $('#confirm-password-input');
-/* declare global-variables */
+/* declare declare global-variables */
 var adminCode = '0000';
 var profileUser;
 
