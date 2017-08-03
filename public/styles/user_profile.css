@@ -173,6 +173,15 @@ button.form-button {
 
 /*****************************************/
 
+/*a.navbar-brand:hover {
+  */
+
+/*}*/
+
+a.navbar-brand {
+  min-width: 140px;
+}
+
 li.nested-list-header {
   cursor: pointer;
 }
