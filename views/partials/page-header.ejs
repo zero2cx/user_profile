@@ -14,31 +14,37 @@
       <div class="container-fluid">
   
         <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsible-navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
           <a class="navbar-brand" href="/">UserPro</a>
         </div>
 
+        <div class="collapse navbar-collapse" id="collapsible-navbar">
 <% include ./page-user-list %>
-        
-        <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right">
 <% if (!currentUser) { %>
-          <li style="margin-top: 3px;">
-            <form class="navbar-form" action="/login" method="post">
-              <div class="form-group">
-                <input type="text" style="max-width: 140px;" class="form-control input-sm" name="username" placeholder="username">
-              </div>
-              <div class="form-group">
-                <input type="password" style="max-width: 140px;" class="form-control input-sm" name="password" placeholder="password">
-              </div>
-              <button type="submit" class="btn btn-default btn-xs">Log In</button>
-            </form>
-          </li>
-          <li><a href="/new">Sign Up</a></li>
+            <li style="margin-top: 3px;">
+              <form class="navbar-form" action="/login" method="post">
+                <span class="form-group">
+                  <input type="text" style="max-width: 140px;" class="form-control input-sm horizontal-form" name="username" placeholder="username">
+                </span>
+                <span class="form-group">
+                  <input type="password" style="max-width: 140px;" class="form-control input-sm horizontal-form" name="password" placeholder="password">
+                </span>
+                <button type="submit" class="btn btn-default btn-xs horizontal-form">Log In</button>
+              </form>
+            </li>
+            <li><a href="/new">Sign Up</a></li>
 <% } else { %>
-          <li class="user-brand">Signed in as</li>
-          <li><a href="/<%= currentUser._id %>"><%= currentUser.username %></a></li>
-          <li><a href="/logout">Log Out</a></li>
+            <li class="user-brand">Signed in as</li>
+            <li><a href="/<%= currentUser._id %>"><%= currentUser.username %></a></li>
+            <li><a href="/logout">Log Out</a></li>
   <% } %>
-        </ul>
-  
+          </ul>
+        </div>
       </div>
     </nav>

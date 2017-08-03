@@ -163,6 +163,13 @@ button.form-button {
   width: 124px;
 }
 
+.horizontal-form {
+  display: inline-block;
+}
+
+.navbar-collapse.in {
+  overflow-y: visible;
+}
 
 /*****************************************/
 
