@@ -170,7 +170,7 @@ li.nested-list-header {
   cursor: pointer;
 }
 
-ul.nested-list li.user-brand {
+ul.navbar-nav li.user-brand {
   color: #9d9d9d;
   margin-top: 13px;
 }
