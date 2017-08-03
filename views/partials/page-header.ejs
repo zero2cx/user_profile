@@ -16,10 +16,6 @@
         <div class="navbar-header">
           <a class="navbar-brand" href="/">UserPro</a>
         </div>
-        
-        <!--<ul class="nav navbar-nav">-->
-        <!--  <li><a href="/index">User List</a></li>-->
-        <!--</ul>-->
 
 <% include ./page-user-list %>
         
@@ -38,7 +34,7 @@
           </li>
           <li><a href="/new">Sign Up</a></li>
 <% } else { %>
-          <li style="color: #9d9d9d; margin-top: 14px;">Signed in as</li>
+          <li class="user-brand">Signed in as</li>
           <li><a href="/01010101010101"><%= currentUser.username %></a></li>
           <li><a href="/logout">Log Out</a></li>
   <% } %>
