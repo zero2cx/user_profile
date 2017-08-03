@@ -2,16 +2,14 @@
  * file: routes/user.js
  */
 
-
 /**
- * import modules and setup global variables
+ * import modules and declare global variables
  */
 var filename = __filename.split("/").pop();
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var User = require('../models/user');
-
 
 /**
  * ROUTE: GET /
@@ -21,7 +19,6 @@ router.get('/', function(req, res) {
   res.render('landing');
 });
 
-
 /**
  * ROUTE: GET /new
  *  display new user form
@@ -29,7 +26,6 @@ router.get('/', function(req, res) {
 router.get('/new', function(req, res) {
   res.render('new');
 });
-
 
 /**
  * ROUTE: POST /new
@@ -59,7 +55,6 @@ router.post('/new', function(req, res) {
   });
 });
 
-
 /**
  * ROUTE: POST /login
  *  login the current user
@@ -69,7 +64,6 @@ router.post('/login', passport.authenticate('local', {
   failureRedirect: '/login/failure'
 }), function(req, res) {});
 
-
 /**
  * ROUTE: GET /login/success
  *  redirect a successful login back to the same view
@@ -78,7 +72,6 @@ router.get('/login/success', function(req, res, next) {
   res.redirect('back');
 });
 
-
 /**
  * ROUTE: GET /login/failure
  *  redirect a failed login back to the same view
@@ -86,7 +79,6 @@ router.get('/login/success', function(req, res, next) {
 router.get('/login/failure', function(req, res, next) {
   res.redirect('back');
 });
-
 
 /**
  * ROUTE: GET /logout
@@ -97,7 +89,6 @@ router.get('/logout', function(req, res) {
   // res.redirect(req.get('referer'));
   res.redirect('back');
 });
-
 
 /**
  * ROUTE: GET /:id
@@ -117,8 +108,7 @@ router.get('/:id', function(req, res) {
   });
 });
 
-
 /**
- * export our local instance of express.Router()
+ * export the local instance of express.Router()
  */
 module.exports = router;

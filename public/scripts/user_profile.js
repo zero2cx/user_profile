@@ -2,11 +2,9 @@
  * file: public/scripts/user_profile.js
  */
 
-
 /**
- * set up global-variables and dom-elements
+ * declare dom-elements and global variables
  */
-
 /* the dom-elements of the profile-form */
 var iconAdmin = $('#admin-icon');
 var bannerUsername = $('#username-banner');
@@ -28,10 +26,9 @@ var adminAction = $('#admin-action');
 var formNewUser = $('#new-user-form');
 var inputPassword = $('#password-input');
 var inputConfirmPassword = $('#confirm-password-input');
-/* set global-variables */
+/* declare global-variables */
 var adminCode = '0000';
 var profileUser;
-
 
 /**
  * do pre-validation before submitting the new-user-form

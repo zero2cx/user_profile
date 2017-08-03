@@ -3,7 +3,7 @@
  */
 
 /**
- * import modules and setup global variables
+ * import modules and declare global variables
  */
 var filename = __filename.split("/").pop();
 var express = require('express');
@@ -19,7 +19,7 @@ var seedDatabase = require("./seeds");
 var databaseUrl = process.env.DATABASE_URL || "mongodb://localhost/user_profile";
 
 /**
- * initialize database connectivity and seed some data
+ * initialize database connection and re-seed with test data
  */
 mongoose.Promise = global.Promise;
 mongoose.connect(databaseUrl);
