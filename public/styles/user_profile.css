@@ -74,10 +74,6 @@ body {
   margin-top: 6px;
 }
 
-.debug-control {}
-
-.avatar-editable {}
-
 .avatar-thumbnail {
   margin: 34px auto 0 auto;
   width: 136px;
@@ -103,7 +99,7 @@ body {
   opacity: 0.7;
 }
 
-i.undo-icon {
+.undo-icon {
   display: none;
   margin-top: 6px;
   cursor: pointer;
@@ -116,11 +112,11 @@ i.undo-icon {
   color: red;
 }
 
-textarea.form-control {
+.form-control {
   resize: none;
 }
 
-button.form-button {
+.form-button {
   /*display: none;*/
   margin: 6px 6px;
   width: 124px;
@@ -136,20 +132,15 @@ button.form-button {
 
 /*****************************************/
 
-/*a.navbar-brand:hover {
-  */
-
-/*}*/
-
-a.navbar-brand {
+.navbar-brand {
   min-width: 140px;
 }
 
-li.nested-list-header {
+.nested-list-header {
   cursor: pointer;
 }
 
-ul.navbar-nav li.user-brand {
+.navbar-nav .user-brand {
   color: #9d9d9d;
   margin-top: 13px;
 }
@@ -209,10 +200,10 @@ ul.nested-list li.list-child>a {
   text-decoration: none;
 }
 
-ul.nested-list li.list-child.item-green>a {
+ul.nested-list .item-green>a {
   color: green;
 }
 
-ul.nested-list li.list-child.item-red>a {
+ul.nested-list .item-red>a {
   color: #d03030;
 }
