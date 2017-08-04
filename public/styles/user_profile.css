@@ -51,30 +51,6 @@
 
 /****  DEBUG ONLY  *******************************/
 
-.debug-container {
-  margin: 0 auto;
-  padding: 6px;
-  width: 270px;
-  border: 2px solid green;
-  background-color: lightgray;
-}
-
-.debug-selector {
-  line-height: 0.8;
-}
-
-#hide-debug-button {
-  display: none;
-}
-
-#debug-form {
-  margin-bottom: 6px;
-  display: none;
-}
-
-
-/****  DEBUG ONLY  *******************************/
-
 body {
   font-family: Cabin;
   padding-top: 50px;
@@ -89,13 +65,7 @@ body {
   }
 }
 
-.user-form {
-  margin-top: 10px;
-  max-width: 270px;
-}
-
-.form-container,
-.user-form-wide {
+.form-container {
   margin-top: 10px;
   max-width: 520px;
 }
@@ -109,7 +79,7 @@ body {
 .avatar-editable {}
 
 .avatar-thumbnail {
-  margin: 30px auto 0 auto;
+  margin: 34px auto 0 auto;
   width: 136px;
   height: 136px;
   cursor: pointer;
@@ -133,16 +103,9 @@ body {
   opacity: 0.7;
 }
 
-i.done-icon {
+i.undo-icon {
   display: none;
-  color: green;
-  cursor: pointer;
-}
-
-i.edit-icon,
-i.undo-icon,
-i.admin-icon {
-  display: none;
+  margin-top: 6px;
   cursor: pointer;
   opacity: 0.6;
 }
