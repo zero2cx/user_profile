@@ -43,7 +43,7 @@ router.post('/new', function(req, res) {
   });
   User.register(newUser, req.body.password, function(err, user) {
     if (err) {
-      console.error('2 ** error: [%s] %s', filename, err);
+      console.error(' ** error: [%s] %s [%s]', filename, err, 'ROUTE: POST /new');
       return res.redirect('new');
     }
     passport.authenticate('local')(req, res, function() {
@@ -82,7 +82,7 @@ router.get('/login/failure', function(req, res, next) {
 
 /**
  * ROUTE: GET /logout
- *  log out the user
+ *  log out the current user
  */
 router.get('/logout', function(req, res) {
   req.logout();
@@ -92,13 +92,31 @@ router.get('/logout', function(req, res) {
 
 /**
  * ROUTE: GET /:id
- *  display a user profile
+ *  display a user-profile
  */
 router.get('/:id', function(req, res) {
   User.findById(req.params.id, function(err, user) {
     if (err) {
-      console.error('3 ** error: [%s] %s', filename, err);
+      console.error(' ** error: [%s] %s [%s]', filename, err, 'ROUTE: GET /:id');
       res.redirect('/');
+    }
+    else {
+      res.render('show', {
+        user: user
+      });
+    }
+  });
+});
+
+/**
+ * ROUTE: POST /:id
+ *  update changes to the user-profile in the database
+ */
+router.post('/:id', function(req, res) {
+  User.findByIdAndUpdate(req.params.id, req.body.user, function(err, user) {
+    if (err) {
+      console.error(' ** error: [%s] %s [%s]', filename, err, 'ROUTE: POST /:id');
+      res.redirect('back');
     }
     else {
       res.render('show', {

@@ -2,7 +2,7 @@
 
     <div class="container form-container">
     
-      <form name="profile-form" action="/profile" method="POST">
+      <form name="profile-form" action="/<%= user._id %>" method="POST">
         
         <div class="text-center">
 <% /* for site admins, display the admin-icon prepended to the username */ 
@@ -51,9 +51,9 @@
                 </span>
 <% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %> 
-                <input id="first-name-input" class="form-control" type="text" placeholder="first name" value="<%= user.first_name %>">
+                <input id="first-name-input" class="form-control" type="text" name="user[first_name]" placeholder="first name" value="<%= user.first_name %>">
 <% } else { %>
-                <input id="first-name-input" class="form-control" type="text" placeholder="first name" value="<%= user.first_name %>" readonly>
+                <input id="first-name-input" class="form-control" type="text" name="user[first_name]" placeholder="first name" value="<%= user.first_name %>" readonly>
 <% } %>
               </div>
       
@@ -64,9 +64,9 @@
                 </span>
 <% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %> 
-                <input id="last-name-input" class="form-control" type="text" placeholder="last name" value="<%= user.last_name %>">
+                <input id="last-name-input" class="form-control" type="text" name="user[last_name]" placeholder="last name" value="<%= user.last_name %>">
 <% } else { %>
-                <input id="last-name-input" class="form-control" type="text" placeholder="last name" value="<%= user.last_name %>" readonly>
+                <input id="last-name-input" class="form-control" type="text" name="user[last_name]" placeholder="last name" value="<%= user.last_name %>" readonly>
 <% } %>
               </div>
               
@@ -77,9 +77,9 @@
                 </span>
 <% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %> 
-                <input id="email-address-input" class="form-control" type="text" placeholder="email address" value="<%= user.email_address %>">
+                <input id="email-address-input" class="form-control" type="text" name="user[email_address]" placeholder="email address" value="<%= user.email_address %>">
 <% } else { %>
-                <input id="email-address-input" class="form-control" type="text" placeholder="email address" value="<%= user.email_address %>" readonly>
+                <input id="email-address-input" class="form-control" type="text" name="user[email_address]" placeholder="email address" value="<%= user.email_address %>" readonly>
 <% } %>
               </div>
         
@@ -90,9 +90,9 @@
                 </span>
 <% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %> 
-                <textarea id="biography-input" class="form-control" rows="4" placeholder="biography"><%= user.biography %></textarea>
+                <textarea id="biography-input" class="form-control" rows="4" name="user[biography]" placeholder="biography"><%= user.biography %></textarea>
 <% } else { %>
-                <textarea id="biography-input" class="form-control" rows="4" placeholder="biography" readonly><%= user.biography %></textarea>
+                <textarea id="biography-input" class="form-control" rows="4" name="user[biography]" placeholder="biography" readonly><%= user.biography %></textarea>
 <% } %>
               </div>
             </div>
