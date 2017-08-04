@@ -41,7 +41,7 @@
             <li><a href="/user/new">Sign Up</a></li>
 <% } else { %>
             <li class="user-brand">Signed in as</li>
-            <li><a href="/<%= currentUser._id %>"><%= currentUser.username %></a></li>
+            <li><a href="/user/<%= currentUser._id %>"><%= currentUser.username %></a></li>
             <li><a href="/user/logout">Log Out</a></li>
   <% } %>
           </ul>
