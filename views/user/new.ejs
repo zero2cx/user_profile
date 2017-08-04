@@ -1,11 +1,11 @@
-<% include ./partials/page-header %>
+<% include ../partials/page-header %>
 
     <div class="container user-form">
       <div class="row text-center">
         
         <h1>new user form</h1>
 
-        <form id="new-user-form" name="new_user_form" action="/new" method="POST">
+        <form id="new-user-form" name="new_user_form" action="/user/new" method="POST">
 
           <div class="form-group">
             <input class="form-control" type="text" name="username" placeholder="choose username">
@@ -25,9 +25,9 @@
 
         </form>
 
-        <a href="/index">cancel</a>
+        <a href="/">cancel</a>
 
       </div>
     </div>
 
-<% include ./partials/page-footer %>
+<% include ../partials/page-footer %>

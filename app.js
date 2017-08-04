@@ -66,9 +66,17 @@ app.use(function(req, res, next) {
 });
 
 /**
+ * ROUTE: GET /
+ *  display landing page
+ */
+app.get('/', function(req, res) {
+  res.render('landing');
+});
+
+/**
  * import the user routes
  */
-app.use(userRoutes);
+app.use('/user', userRoutes);
 
 /**
  *  start the app server

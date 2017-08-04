@@ -1,8 +1,8 @@
-<% include ./partials/page-header %>
+<% include ../partials/page-header %>
 
     <div class="container form-container">
     
-      <form name="profile-form" action="/<%= user._id %>" method="POST">
+      <form name="profile-form" action="/user/<%= user._id %>" method="POST">
         
         <div class="text-center">
 <% /* for site admins, display the admin-icon prepended to the username */ 
@@ -108,4 +108,4 @@
     </div>
   </div>
 
-<% include ./partials/page-footer %>
+<% include ../partials/page-footer %>

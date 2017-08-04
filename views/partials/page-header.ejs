@@ -28,7 +28,7 @@
           <ul class="nav navbar-nav navbar-right">
 <% if (!currentUser) { %>
             <li style="margin-top: 3px;">
-              <form class="navbar-form" action="/login" method="post">
+              <form class="navbar-form" action="/user/login" method="post">
                 <span class="form-group">
                   <input type="text" style="max-width: 140px;" class="form-control input-sm horizontal-form" name="username" placeholder="username">
                 </span>
@@ -38,11 +38,11 @@
                 <button type="submit" class="btn btn-default btn-xs horizontal-form">Log In</button>
               </form>
             </li>
-            <li><a href="/new">Sign Up</a></li>
+            <li><a href="/user/new">Sign Up</a></li>
 <% } else { %>
             <li class="user-brand">Signed in as</li>
             <li><a href="/<%= currentUser._id %>"><%= currentUser.username %></a></li>
-            <li><a href="/logout">Log Out</a></li>
+            <li><a href="/user/logout">Log Out</a></li>
   <% } %>
           </ul>
         </div>

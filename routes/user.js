@@ -12,19 +12,11 @@ var passport = require('passport');
 var User = require('../models/user');
 
 /**
- * ROUTE: GET /
- *  display landing page
- */
-router.get('/', function(req, res) {
-  res.render('landing');
-});
-
-/**
  * ROUTE: GET /new
  *  display new user form
  */
 router.get('/new', function(req, res) {
-  res.render('new');
+  res.render('user/new');
 });
 
 /**
@@ -48,7 +40,7 @@ router.post('/new', function(req, res) {
     }
     passport.authenticate('local')(req, res, function() {
       console.log(' ++ info: [%s] create user "%s"', filename, user.username);
-      res.render('show', {
+      res.render('user/show', {
         user: user
       });
     });
@@ -60,8 +52,8 @@ router.post('/new', function(req, res) {
  *  login the current user
  */
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/login/success',
-  failureRedirect: '/login/failure'
+  successRedirect: '/user/login/success',
+  failureRedirect: '/user/login/failure'
 }), function(req, res) {});
 
 /**
@@ -101,7 +93,7 @@ router.get('/:id', function(req, res) {
       res.redirect('/');
     }
     else {
-      res.render('show', {
+      res.render('user/show', {
         user: user
       });
     }
@@ -119,7 +111,7 @@ router.post('/:id', function(req, res) {
       res.redirect('back');
     }
     else {
-      res.render('show', {
+      res.render('user/show', {
         user: user
       });
     }
