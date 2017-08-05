@@ -26,18 +26,30 @@ var adminAction = $('#admin-action');
 var formNewUser = $('#new-user-form');
 var inputPassword = $('#password-input');
 var inputConfirmPassword = $('#confirm-password-input');
-/* declare declare global-variables */
+/* declare global-variables */
 var adminCode = '0000';
 var profileUser;
 
 /**
- * do pre-validation before submitting the new-user-form
+ * show this input's undo-button if the text-input's value 
+ * has changed
  */
-function submitNewUserForm() {
-  if (inputPassword.val() === inputConfirmPassword.val()) {
-    formNewUser.submit();
-  }
-  else {
-    alert('password entries do not match');
-  }
-}
+$('.form-control').on('input', function() {
+  $(this).prev().children().show();
+});
+
+/**
+ * hide all undo-buttons when the reset-form-button is clicked
+ */
+buttonReset.on('click', function() {
+  $('.undo-button').hide();
+});
+
+/**
+ * when an undo button is clicked, reset the value of its
+ * text-input and hide the undo button
+ */
+$('.undo-button').on('click', function() {
+  $('#' + $(this).attr('data-input')).val($('#' + $(this).attr('data-undo')).val());
+  $(this).hide();
+});

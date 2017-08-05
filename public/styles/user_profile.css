@@ -96,12 +96,13 @@ body {
 }
 
 .dimmed {
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
-.undo-icon {
+.undo-button {
   display: none;
   margin-top: 6px;
+  /*border: 1px solid blue;*/
   cursor: pointer;
   opacity: 0.6;
 }
@@ -117,7 +118,6 @@ body {
 }
 
 .form-button {
-  /*display: none;*/
   margin: 6px 6px;
   width: 124px;
 }
