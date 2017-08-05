@@ -41,9 +41,6 @@ router.post('/new', function(req, res) {
     passport.authenticate('local')(req, res, function() {
       console.log(' ++ info: [%s] create user "%s"', filename, user.username);
       res.redirect('/user/' + user._id);
-      // res.render('user/show', {
-      //   user: user
-      // });
     });
   });
 });
