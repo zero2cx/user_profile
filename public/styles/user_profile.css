@@ -2,88 +2,114 @@
  * file: public/styles/user_profile.css
  */
 
-/**,
-*::before,
-*::after {
-  font-size: 0.8em;
-}
-*/
+/****  DEBUG SECTION *************************************/
 
-.red {
+.red-debug {
   border: 1px solid red !important;
 }
 
-.orange {
+.orange-debug {
   border: 1px solid orange !important;
 }
 
-.yellow {
+.yellow-debug {
   border: 1px solid yellow !important;
 }
 
-.green {
+.green-debug {
   border: 1px solid green !important;
 }
 
-.blue {
+.blue-debug {
   border: 1px solid blue !important;
 }
 
-.purple {
+.purple-debug {
   border: 1px solid purple !important;
 }
 
-.grey {
+.grey-debug {
   border: 1px solid grey !important;
 }
 
-.black {
+.black-debug {
   border: 1px solid black !important;
 }
 
-/* * { border: 1px solid black !important; }*/
+/*
+* { border: 1px solid black !important; }*/
 
-/*.row { border: 1px solid orange !important; }*/
+/*
+i { border: 1px solid red !important; }*/
 
-/*div[class^="col-"], div[class*=" col-"] { border: 1px solid green; }*/
+/*
+.row { border: 1px solid orange !important; }*/
 
-/*.hidden { display: none; }*/
+/*
+div[class^="col-"], div[class*=" col-"] { border: 1px solid green !important; }*/
 
-/****  DEBUG ONLY  *******************************/
+/*
+.display-none { display: none !important; }*/
+
+/*
+.display-block { display: block !important; }*/
+
+/*
+.display-inline { display: inline !important; }*/
+
+/*
+.display-inline-block { display: inline-block !important; }*/
+
+/****  DEBUG SECTION ABOVE THIS LINE *********************/
+
+/*
+*, *::before, *::after { margin: 0; padding: 0; }*/
 
 body {
-  font-family: Cabin;
+  font-family: Cabin, sans-serif;
   padding-top: 50px;
-}
-
-@media (max-width: 767px) {
-  .form-container {
-    width: 270px;
-  }
-  img.avatar-thumbnail {
-    margin-top: 10px;
-  }
 }
 
 .form-container {
   margin-top: 10px;
-  max-width: 520px;
+  max-width: 600px;
 }
 
-.profile-form {
-  margin-top: 6px;
+@media (max-width: 767px) {
+  .form-container {
+    width: 300px;
+  }
+}
+
+.avatar-box {
+  width: 166px;
+}
+
+.undo-button {
+  /*visibility: hidden;*/
+  margin-top: 8px;
+  margin-bottom: 2px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.avatar-box .undo-button {
+  margin-left: 12px;
+}
+
+.form-group .undo-button {
+  margin-right: 12px;
 }
 
 .avatar-thumbnail {
-  margin: 34px auto 0 auto;
-  width: 136px;
-  height: 136px;
+  margin: 0 auto;
+  width: 166px;
+  height: 166px;
   cursor: pointer;
 }
 
-.large-gutter {
-  padding-left: 10px;
-  padding-right: 10px;
+.control-label {
+  margin-left: 12px;
 }
 
 .no-gutter {
@@ -99,15 +125,7 @@ body {
   opacity: 0.8;
 }
 
-.undo-button {
-  display: none;
-  margin-top: 6px;
-  /*border: 1px solid blue;*/
-  cursor: pointer;
-  opacity: 0.6;
-}
-
-.suspension {
+.suspended {
   font-style: italic;
   margin: 0 auto;
   color: red;
@@ -126,11 +144,11 @@ body {
   display: inline-block;
 }
 
+/*************************************/
+
 .navbar-collapse.in {
   overflow-y: visible;
 }
-
-/*****************************************/
 
 .navbar-text {
   margin: 13px 4px;
