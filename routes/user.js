@@ -76,7 +76,6 @@ router.get('/login/failure', function(req, res, next) {
  */
 router.get('/logout', function(req, res) {
   req.logout();
-  // res.redirect(req.get('referer'));
   res.redirect('back');
 });
 
@@ -109,9 +108,7 @@ router.post('/:id', function(req, res) {
       res.redirect('back');
     }
     else {
-      res.render('user/show', {
-        user: user
-      });
+      res.redirect('/user/' + user._id);
     }
   });
 });
