@@ -40,8 +40,6 @@
             </li>
             <li><a href="/user/new">Sign Up</a></li>
 <% } else { %>
-            <!--<p class="navbar-text">Test word is </p>-->
-            <!--<li class="user-brand">Signed in as</li>-->
             <li><a href="/user/<%= currentUser._id %>">Signed in as <%= currentUser.username %></a></li>
             <li><a href="/user/logout">Log Out</a></li>
   <% } %>
