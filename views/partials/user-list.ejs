@@ -1,35 +1,35 @@
 <% /* file: views/partials/user-list.ejs              */ %>
 
-<ul class="nav navbar-nav">
-  <li class="nested-list-header"><a onclick="$(this).next().toggle()">Site Members <span class="caret"></span></a>
-    <ul class="dropdown-menu nested-list">
-      <li class="list-parent"><a onclick="$(this).next().toggle(); $(this).children().toggleClass('arrow-right').toggleClass('arrow-down')"><span class="arrow-down"></span>Users</a>
-        <ul class="list-children-open">
+    <ul class="nav navbar-nav">
+      <li class="nested-list-header"><a onclick="$(this).next().toggle()">Site Members <span class="caret"></span></a>
+        <ul class="dropdown-menu nested-list">
+          <li class="list-parent"><a onclick="$(this).next().toggle(); $(this).children().toggleClass('arrow-right').toggleClass('arrow-down')"><span class="arrow-down"></span>Users</a>
+            <ul class="list-children-open">
 <% users.forEach(function(user) { %>
   <% if (!user.is_admin && !user.is_suspended) { %>
-          <li class="list-child"><a href="/user/<%= user._id %>"><%= user.username %></a></li>
+              <li class="list-child"><a href="/user/<%= user._id %>"><%= user.username %></a></li>
   <% } %>
 <% }) %>
-        </ul><!-- /list-children -->
-      </li><!-- /list-parent -->
-      <li  class="list-parent"><a id="admin-item" onclick="$(this).next().toggle(); $(this).children().toggleClass('arrow-right').toggleClass('arrow-down')"><span class="arrow-right"></span>Admins</a>
-        <ul class="list-children">
+            </ul><!-- /.list-children -->
+          </li><!-- /.list-parent -->
+          <li  class="list-parent"><a id="admin-item" onclick="$(this).next().toggle(); $(this).children().toggleClass('arrow-right').toggleClass('arrow-down')"><span class="arrow-right"></span>Admins</a>
+            <ul class="list-children">
 <% users.forEach(function(user) { %>
   <% if (user.is_admin && !user.is_suspended) { %>
-          <li class="list-child item-green"><a href="/user/<%= user._id %>"><%= user.username %></a></li>
+              <li class="list-child item-green"><a href="/user/<%= user._id %>"><%= user.username %></a></li>
   <% } %>
 <% }) %>
-        </ul><!-- /list-children -->
-      </li><!-- /list-parent -->
-      <li class="list-parent"><a id="suspended-item" onclick="$(this).next().toggle(); $(this).children().toggleClass('arrow-right').toggleClass('arrow-down')"><span class="arrow-right"></span>Suspended</a>
-        <ul class="list-children">
+            </ul><!-- /.list-children -->
+          </li><!-- /.list-parent -->
+          <li class="list-parent"><a id="suspended-item" onclick="$(this).next().toggle(); $(this).children().toggleClass('arrow-right').toggleClass('arrow-down')"><span class="arrow-right"></span>Suspended</a>
+            <ul class="list-children">
 <% users.forEach(function(user) { %>
   <% if (user.is_suspended) { %>
-          <li class="list-child item-red"><a href="/user/<%= user._id %>"><%= user.username %></a></li>
+              <li class="list-child item-red"><a href="/user/<%= user._id %>"><%= user.username %></a></li>
   <% } %>
 <% }) %>
-        </ul><!-- /list-children -->
-      </li><!-- /list-parent -->
-    </ul><!-- /dropdown-menu /nested-list -->
-  </li><!-- /nested-list-header -->
-</ul><!-- /nav /navbar-nav -->
+            </ul><!-- /.list-children -->
+          </li><!-- /.list-parent -->
+        </ul><!-- /.dropdown-menu /.nested-list -->
+      </li><!-- /.nested-list-header -->
+    </ul><!-- /.nav /.navbar-nav -->
