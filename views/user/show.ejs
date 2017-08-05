@@ -34,9 +34,8 @@
               <button id="suspend-button" class="form-button btn btn-xs btn-danger" href="javascript:suspendUser()">suspend user</button>
   <% } %>
 <% } %>
-<% /* for site-users, if viewing their own profile and not suspended, display the form-reset/submit buttons */
+<% /* for site-users, if viewing their own profile and not suspended, display the form-submit button */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %> 
-              <!--<button id="reset-button" class="form-button btn btn-xs btn-primary" type="button" disabled="disabled">reset profile</button>-->
               <button id="save-button" class="form-button btn btn-xs btn-primary" type="submit" disabled="disabled">save changes</button>
 <% } %>
             </div>
