@@ -132,17 +132,16 @@ body {
 
 /*****************************************/
 
+.navbar-text {
+  margin: 13px 4px;
+}
+
 .navbar-brand {
   min-width: 140px;
 }
 
 .nested-list-header {
   cursor: pointer;
-}
-
-.navbar-nav .user-brand {
-  color: #9d9d9d;
-  margin-top: 13px;
 }
 
 ul.nested-list {
