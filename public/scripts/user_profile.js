@@ -29,6 +29,12 @@ var inputConfirmPassword = $('#confirm-password-input');
 /* declare global-variables */
 var adminCode = '0000';
 var profileUser;
+var changed = {
+  firstName: false,
+  lastName: false,
+  emailAddress: false,
+  biography: false
+};
 
 /**
  * show this input's undo-button if the text-input's value 
@@ -36,14 +42,19 @@ var profileUser;
  */
 $('.form-control').on('input', function() {
   $(this).prev().children().show();
+  changed[$(this).attr('data-changed')] = true;
+  // buttonReset.attr('disabled', false);
+  buttonSave.attr('disabled', false)
 });
 
 /**
  * hide all undo-buttons when the reset-form-button is clicked
  */
-buttonReset.on('click', function() {
-  $('.undo-button').hide();
-});
+// buttonReset.on('click', function() {
+//   $('.undo-button').click();
+//   $(this).attr('disabled', true);
+//   buttonSave.attr('disabled', true)
+// });
 
 /**
  * when an undo button is clicked, reset the value of its
@@ -52,4 +63,7 @@ buttonReset.on('click', function() {
 $('.undo-button').on('click', function() {
   $('#' + $(this).attr('data-input')).val($('#' + $(this).attr('data-undo')).val());
   $(this).hide();
+  changed[$(this).attr('data-changed')] = false;
+  if (changed.firstName || changed.lastName || changed.emailAddress || changed.biography) return;
+  buttonSave.attr('disabled', true);
 });

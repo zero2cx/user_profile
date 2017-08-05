@@ -34,10 +34,10 @@
               <button id="suspend-button" class="form-button btn btn-xs btn-danger" href="javascript:suspendUser()">suspend user</button>
   <% } %>
 <% } %>
-<% /* for site-users, if viewing their own profile and not suspended, display the form-edit buttons */
+<% /* for site-users, if viewing their own profile and not suspended, display the form-reset/submit buttons */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %> 
-              <button id="reset-button" class="form-button btn btn-xs btn-primary" type="reset" href="">reset form</button>
-              <button id="save-button" class="form-button btn btn-xs btn-primary" type="submit">save changes</button>
+              <!--<button id="reset-button" class="form-button btn btn-xs btn-primary" type="button" disabled="disabled">reset profile</button>-->
+              <button id="save-button" class="form-button btn btn-xs btn-primary" type="submit" disabled="disabled">save changes</button>
 <% } %>
             </div>
           </div>
@@ -47,11 +47,11 @@
               <div class="form-group">
                 <label for="first-name" class="control-label">first name</label>
                 <span class="pull-right">
-                  <i class="undo-button fa fa-undo" aria-hidden="true" title="undo edit" data-input="first-name-input" data-undo="first-name-undo"></i>
+                  <i class="undo-button fa fa-undo" aria-hidden="true" title="undo edit" data-input="first-name-input" data-undo="first-name-undo" data-changed="firstName"></i>
                 </span>
 <% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %> 
-                <input id="first-name-input" class="form-control" type="text" name="user[first_name]" placeholder="first name" value="<%= user.first_name %>">
+                <input id="first-name-input" class="form-control" type="text" name="user[first_name]" placeholder="first name" value="<%= user.first_name %>" data-changed="firstName">
 <% } else { %>
                 <input id="first-name-input" class="form-control" type="text" name="user[first_name]" placeholder="first name" value="<%= user.first_name %>" readonly>
 <% } %>
@@ -61,11 +61,11 @@
               <div class="form-group">
                 <label for="last-name" class="control-label">last name</label>
                 <span class="pull-right">
-                  <i class="undo-button fa fa-undo" aria-hidden="true" title="undo edit" data-input="last-name-input" data-undo="first-name-undo"></i>
+                  <i class="undo-button fa fa-undo" aria-hidden="true" title="undo edit" data-input="last-name-input" data-undo="last-name-undo" data-changed="lastName"></i>
                 </span>
 <% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %> 
-                <input id="last-name-input" class="form-control" type="text" name="user[last_name]" placeholder="last name" value="<%= user.last_name %>">
+                <input id="last-name-input" class="form-control" type="text" name="user[last_name]" placeholder="last name" value="<%= user.last_name %>" data-changed="lastName">
 <% } else { %>
                 <input id="last-name-input" class="form-control" type="text" name="user[last_name]" placeholder="last name" value="<%= user.last_name %>" readonly>
 <% } %>
@@ -75,11 +75,11 @@
               <div class="form-group">
                 <label for="email-address" class="control-label">email address</label>
                 <span class="pull-right">
-                  <i class="undo-button fa fa-undo" aria-hidden="true" title="undo edit" data-input="email-address-input" data-undo="email-address-undo"></i>
+                  <i class="undo-button fa fa-undo" aria-hidden="true" title="undo edit" data-input="email-address-input" data-undo="email-address-undo" data-changed="emailAddress"></i>
                 </span>
 <% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %> 
-                <input id="email-address-input" class="form-control" type="text" name="user[email_address]" placeholder="email address" value="<%= user.email_address %>">
+                <input id="email-address-input" class="form-control" type="text" name="user[email_address]" placeholder="email address" value="<%= user.email_address %>" data-changed="emailAddress">
 <% } else { %>
                 <input id="email-address-input" class="form-control" type="text" name="user[email_address]" placeholder="email address" value="<%= user.email_address %>" readonly>
 <% } %>
@@ -89,11 +89,11 @@
               <div class="form-group">
                 <label for="biography" class="control-label">biography</label>
                 <span class="pull-right">
-                  <i class="undo-button fa fa-undo" aria-hidden="true" title="undo edit" data-input="biography-input" data-undo="biography-undo"></i>
+                  <i class="undo-button fa fa-undo" aria-hidden="true" title="undo edit" data-input="biography-input" data-undo="biography-undo" data-changed="biography"></i>
                 </span>
 <% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %> 
-                <textarea id="biography-input" class="form-control" rows="4" name="user[biography]" placeholder="biography"><%= user.biography %></textarea>
+                <textarea id="biography-input" class="form-control" rows="4" name="user[biography]" placeholder="biography" data-changed="biography"><%= user.biography %></textarea>
 <% } else { %>
                 <textarea id="biography-input" class="form-control" rows="4" name="user[biography]" placeholder="biography" readonly><%= user.biography %></textarea>
 <% } %>
