@@ -70,6 +70,7 @@ body {
   padding-top: 50px;
 }
 
+.modal-form,
 .form-container {
   margin-top: 10px;
   max-width: 600px;
@@ -86,7 +87,7 @@ body {
 }
 
 .undo-button {
-  /*visibility: hidden;*/
+  visibility: hidden;
   margin-top: 8px;
   margin-bottom: 2px;
   cursor: pointer;
@@ -101,11 +102,19 @@ body {
   margin-right: 12px;
 }
 
+.avatar-thumbnail:hover {
+  opacity: 0.8;
+}
+
 .avatar-thumbnail {
   margin: 0 auto;
   width: 166px;
   height: 166px;
   cursor: pointer;
+}
+
+.avatar-modal {
+  margin-top: 100px;
 }
 
 .control-label {

@@ -37,8 +37,16 @@ var changed = {
 };
 
 /**
- * show this input's undo-button if the text-input's value 
- * has changed
+ * when the avatar-thumb is clicked, show the avatar-modal dialog
+ */
+// thumbAvatar.on('click', function() {
+// alert('ok');
+// $('#avatar-modal').show();
+// });
+
+/**
+ * when any text-input's value has changed, show the text-input's
+ * associated undo-button
  */
 $('.form-control').on('input', function() {
   $(this).prev().children().css('visibility', 'visible');
@@ -47,8 +55,8 @@ $('.form-control').on('input', function() {
 });
 
 /**
- * when an undo button is clicked, reset the value of its
- * text-input and hide the undo button
+ * when any undo-button is clicked, reset the value of its
+ * associated text-input and hide the undo-button
  */
 $('.undo-button').on('click', function() {
   $('#' + $(this).attr('data-input')).val($('#' + $(this).attr('data-undo')).val());
