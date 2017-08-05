@@ -18,7 +18,7 @@ var UserSchema = new mongoose.Schema({
   },
   join_date: {
     type: String,
-    default: Date.now()
+    default: ((new Date()).getMonth() + 1) + '/' + (new Date()).getDate() + '/' + (new Date()).getFullYear()
   },
   first_name: String,
   last_name: String,
