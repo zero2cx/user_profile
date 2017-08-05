@@ -8,7 +8,7 @@
 /* declare the dom-elements of the profile-form */
 var iconAdmin = $('#admin-icon');
 var bannerUsername = $('#username-banner');
-var bannerSuspension = $('#suspension-banner');
+var bannerSuspended = $('#suspended-banner');
 var thumbAvatar = $('#avatar-thumb');
 var bannerJoinDate = $('#join-date-banner');
 var inputFirstName = $('#first-name-input');
@@ -41,20 +41,10 @@ var changed = {
  * has changed
  */
 $('.form-control').on('input', function() {
-  $(this).prev().children().show();
+  $(this).prev().children().css('visibility', 'visible');
   changed[$(this).attr('data-changed')] = true;
-  // buttonReset.attr('disabled', false);
   buttonSave.attr('disabled', false)
 });
-
-/**
- * hide all undo-buttons when the reset-form-button is clicked
- */
-// buttonReset.on('click', function() {
-//   $('.undo-button').click();
-//   $(this).attr('disabled', true);
-//   buttonSave.attr('disabled', true)
-// });
 
 /**
  * when an undo button is clicked, reset the value of its
@@ -62,7 +52,7 @@ $('.form-control').on('input', function() {
  */
 $('.undo-button').on('click', function() {
   $('#' + $(this).attr('data-input')).val($('#' + $(this).attr('data-undo')).val());
-  $(this).hide();
+  $(this).css('visibility', 'hidden');
   changed[$(this).attr('data-changed')] = false;
   if (changed.firstName || changed.lastName || changed.emailAddress || changed.biography) return;
   buttonSave.attr('disabled', true);
