@@ -2,33 +2,26 @@
  * file: public/scripts/user_profile.js
  */
 
-/**
- * declare dom-elements and global variables
- */
+/*********************************************************/
 /* declare the dom-elements of the profile-form */
-var iconAdmin = $('#admin-icon');
-var bannerUsername = $('#username-banner');
-var bannerSuspended = $('#suspended-banner');
-var thumbAvatar = $('#avatar-thumb');
-var bannerJoinDate = $('#join-date-banner');
-var inputFirstName = $('#first-name-input');
-var inputLastName = $('#last-name-input');
-var inputEmailAddress = $('#email-address-input');
-var inputBiography = $('#biography-input');
+var imageAvatar = $('#avatar-image');
 var buttonReinstate = $('#reinstate-button');
 var buttonSuspend = $('#suspend-button');
-var buttonReset = $('#reset-button');
 var buttonSave = $('#save-button');
-/* declare the dom-elements of the admin-form */
-var adminForm = $('#admin-form');
-var adminAction = $('#admin-action');
+/*********************************************************/
 /* declare the dom-elements of the registration-form */
 var formNewUser = $('#new-user-form');
 var inputPassword = $('#password-input');
 var inputConfirmPassword = $('#confirm-password-input');
+/*********************************************************/
+/* declare the dom-elements of the avatar-chooser */
+var chooserAvatar = $('#avatar-chooser');
+var imageTest = $('#test-image');
+var containerCropper = $('#cropper-container');
+var imageCropper = $('#cropper-image');
+var inputCropperUrl = $('#cropper-url-input');
+/*********************************************************/
 /* declare global-variables */
-var adminCode = '0000';
-var profileUser;
 var changed = {
   firstName: false,
   lastName: false,
@@ -36,13 +29,50 @@ var changed = {
   biography: false
 };
 
+/*********************************************************/
 /**
- * when the avatar-thumb is clicked, show the avatar-modal dialog
+ * when the image-url fails to load into the test-image, inform
+ * the user, and change the text-input's background color to red
  */
-// thumbAvatar.on('click', function() {
-// alert('ok');
-// $('#avatar-modal').show();
-// });
+imageTest.on('error', function() {
+  alert('** error: not a valid image url');
+  inputCropperUrl.css('background-color', '#ffbfbf');
+});
+
+/**
+ * when the image-url changes in the text-input, try to load
+ * that image-url into the hidden test-image
+ */
+inputCropperUrl.on('input', function() {
+  imageTest.attr('src', inputCropperUrl.val());
+});
+
+/**
+ * when an image-url successfully loads into the test-image,
+ * load that image-url into the cropper-image
+ */
+imageTest.on('load', function() {
+  imageCropper.cropper('replace', $(this).attr('src'));
+});
+
+/**
+ * when the modal-dialog is finished loading, overlay the
+ * image-cropper on top of the cropper-image
+ */
+chooserAvatar.on('shown.bs.modal', function(e) {
+  imageCropper.cropper({
+    aspectRatio: 1,
+    background: false
+  });
+});
+
+/*********************************************************/
+/**
+ * when the avatar-image is clicked, show the avatar-chooser dialog
+ */
+imageAvatar.on('click', function() {
+  chooserAvatar.modal();
+});
 
 /**
  * when any text-input's value has changed, show the text-input's
