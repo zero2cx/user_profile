@@ -3,7 +3,7 @@
 <% include ../partials/page-header %>
 
 <!---------------------------------->
-    <div id="avatar-chooser" class="modal fade" tabindex="-1">
+    <div id="avatar-chooser-dialog" class="modal fade" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
 
@@ -11,32 +11,53 @@
 
             <img id="test-image">
 
-            <div class="row">
-              <div class="col-xs-3">
-                <button class="btn btn-primary btn-sm btn-normalize">choose this image</button>
-              </div><!-- /.col -->
-              <div class="col-xs-6">
-                <div class="caption-wrapper">
-                  <div id="cropper-caption">drag and drop your image above</div>
-                </div>
-              </div><!-- /.col -->
-              <div class="col-xs-3">
-                <span id="close-button" class="pull-right">&times;</span>
-              </div><!-- /.col -->
-            </div><!-- /.row -->
+            <div class="control-container">
+              <span id="info-button" class="inline-block pull-left" tabindex="0" data-toggle="popover" data-trigger="focus" title="click for info" data-content="drag and drop your local or web image onto the cropping tool, or else use the form control to either upload your image file or specify an image url on the web">
+                <i class="fa fa-info-circle" title="click for info"></i>
+              </span>
+              <span class="text-center">
+                <button id="crop-button" class="inline-block btn btn-primary btn-sm btn-normalize">crop image</button>
+              </span>
+              <span id="close-button" class="inline-block pull-right" data-dismiss="modal">
+                <i class="fa fa-close" title="close dialog window"></i>
+              </span>
+            </div>
 
-            <div id="cropper-container">
-              <img id="cropper-image" src="https://farm9.staticflickr.com/8609/16169099399_bd393db803.jpg" alt="">
-            </div><!-- /.cropper-container -->
+            <!--<div class="row">-->
+            <!--  <div class="col-xs-4 col-sm-2">-->
+            <!--    <span class="text-center">-->
+            <!--      <button id="crop-button" class="btn btn-primary btn-sm btn-normalize">crop image</button>-->
+            <!--    </span>-->
+            <!--  </div><!-- /.col -->
+
+            <!--  <div class="col-xs-8 col-sm-10">-->
+            <!--    <div id="close-button" class="pull-right" data-dismiss="modal">-->
+            <!--      <i class="fa fa-close"></i>-->
+                  <!--&times;-->
+            <!--    </div>-->
+            <!--    <div id="info-button" class="pull-left" tabindex="0" data-toggle="popover" data-trigger="focus" title="click for info" data-content="drag and drop your local or web image onto the cropping tool, or else use the form control to either upload your image file or specify an image url on the web">-->
+            <!--      <i class="fa fa-info-circle"></i>-->
+            <!--    </div><!-- /#info-button -->
+            <!--  </div><!-- /.col -->
+            <!--</div><!-- /.row -->
+
+            <!--<i class="fa fa-info-circle" onclick="showInfoPop()" onhover="showInfoPop()" data-toggle="tooltip" data-placement="left"></i>-->
+
+            <div id="avatar-cropper">
+              <img id="cropper-image" src="https://farm9.staticflickr.com/8609/16169099399_bd393db803.jpg">
+            </div><!-- /#avatar-croppe -->
+
+            <!--<div class="caption-container">-->
+            <!--  <div id="cropper-caption"></div>-->
+            <!--</div>-->
 
             <div id="control-group-container">
-              <span id="image-url-feedback" class="control-group-feedback">error loading image</span>
-              <span class="pull-right">
-                <i class="reload-button fa fa-refresh" title="reload the image" data-input="cropper-url-input" data-undo="cropper-url-reload" data-changed="cropperUrl"></i>
-              </span><!-- /.pull-right -->
+              <!--<span id="image-url-feedback" class="control-group-feedback">error loading image</span>-->
+              <label for="image-url" class="control-group-label">error: image could not be imported</label>
+          <!--<label for="image-url" class="control-group-label">error while loading the file or url w</label>-->
               <div class="control-group">
                 <input id="upload-button" class="control-group-button btn btn-primarybtn-sm btn-normalize" type="button" value="upload file">
-                <input id="image-url" class="control-group-input" type="text" placeholder="or paste image url here">
+                <input id="image-url" class="form-control control-group-input" type="text" placeholder="or paste image url here">
               </div><!-- /.control-group -->
               <!--<label for="image-url" class="control-group-label">or drag and drop file or web image</label>-->
             </div><!-- /.control-group-container -->
@@ -69,7 +90,7 @@
 
               <div class="avatar-container center-block">
                 <i class="undo-button fa fa-undo" title="undo edit" data-input="avatar-input" data-undo="avatar-undo" data-changed="avatar"></i>
-                <img id="avatar-thumb" class="thumbnail avatar-thumbnail" alt="avatar" src="<%= user.avatar_url %>" data-toggle="modal" data-target="#avatar-chooser">
+                <img id="avatar-image" class="thumbnail avatar-thumbnail" alt="avatar" src="<%= user.avatar_url %>" data-toggle="modal" data-target="#avatar-chooser">
               </div><!-- /.avatar-container -->
               <input type="hidden" name="avatar_url" value="<%= user.avatar_url %>">
 

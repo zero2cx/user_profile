@@ -15,11 +15,11 @@ var inputPassword = $('#password-input');
 var inputConfirmPassword = $('#confirm-password-input');
 /*********************************************************/
 /* declare the dom-elements of the avatar-chooser */
-var chooserAvatar = $('#avatar-chooser');
-var imageTest = $('#test-image');
-var containerCropper = $('#cropper-container');
+var dialogAvatarChooser = $('#avatar-chooser-dialog');
 var imageCropper = $('#cropper-image');
 var inputCropperUrl = $('#cropper-url-input');
+var imageTest = $('#test-image');
+// var containerCropper = $('#cropper-container');
 /*********************************************************/
 /* declare global-variables */
 var changed = {
@@ -30,13 +30,24 @@ var changed = {
 };
 
 /*********************************************************/
+
 /**
- * when the image-url fails to load into the test-image, inform
- * the user, and change the text-input's background color to red
+ * when the avatar-image is clicked, show the avatar-chooser dialog
  */
-imageTest.on('error', function() {
-  alert('** error: not a valid image url');
-  inputCropperUrl.css('background-color', '#ffbfbf');
+imageAvatar.on('click', function() {
+  dialogAvatarChooser.modal();
+});
+
+/**
+ * when the modal-dialog is finished loading, overlay the
+ * image-cropper on top of the cropper-image
+ */
+dialogAvatarChooser.on('shown.bs.modal', function(e) {
+  // alert('new cropper')
+  imageCropper.cropper({
+    aspectRatio: 1,
+    background: false
+  });
 });
 
 /**
@@ -56,23 +67,15 @@ imageTest.on('load', function() {
 });
 
 /**
- * when the modal-dialog is finished loading, overlay the
- * image-cropper on top of the cropper-image
+ * when the image-url fails to load into the test-image, inform
+ * the user, and change the text-input's background color to red
  */
-chooserAvatar.on('shown.bs.modal', function(e) {
-  imageCropper.cropper({
-    aspectRatio: 1,
-    background: false
-  });
+imageTest.on('error', function() {
+  alert('** error: not a valid image url');
+  inputCropperUrl.css('background-color', '#ffbfbf');
 });
 
 /*********************************************************/
-/**
- * when the avatar-image is clicked, show the avatar-chooser dialog
- */
-imageAvatar.on('click', function() {
-  chooserAvatar.modal();
-});
 
 /**
  * when any text-input's value has changed, show the text-input's
