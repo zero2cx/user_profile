@@ -172,11 +172,21 @@ body {
 }
 
 #avatar-cropper {
-  margin: 12px auto;
+  margin: 12px auto 0;
 }
 
 #cropper-image {
   max-width: 100%;
+}
+
+/********************/
+
+#feedback-caption-label {
+  visibility: hidden;
+  /*text-align: center;*/
+  color: #5f5f5f;
+  font-style: italic;
+  font-size: 0.9em;
 }
 
 /********************/
@@ -316,45 +326,3 @@ ul.nested-list .item-red>a {
 }
 
 /*************************************/
-
-#control-group-wrapper {
-  max-width: 540px;
-  margin: 10px 12px 10px 12px;
-}
-
-.control-group {
-  display: flex;
-  min-width: 300px;
-}
-
-.control-group-label {
-  display: inline-block;
-  width: 100%;
-  /*height: 100%;*/
-  text-align: center;
-  white-space: nowrap;
-  color: #5f5f5f;
-  /*   font-weight: 600; */
-  font-style: italic;
-  font-size: 0.9em;
-}
-
-.control-group-input {
-  /*height: 18px;*/
-  padding: 4px 8px;
-  color: #3f3f3f;
-  width: 100%;
-  outline: none;
-  border: 1px solid #cfcfcf;
-  border-left-width: 0;
-  border-radius: 0 4px 4px 0;
-}
-
-.control-group-button {
-  padding: 0 8px;
-  color: white;
-  background-color: #7f7faf;
-  outline: none;
-  border: 1px solid #cfcfcf;
-  border-radius: 4px 0 0 4px;
-}

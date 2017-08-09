@@ -6,7 +6,6 @@
     <div id="avatar-chooser-dialog" class="modal fade" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
-
           <div class="modal-body">
 
             <img id="test-image">
@@ -21,14 +20,24 @@
             <div id="avatar-cropper">
               <img id="cropper-image" src="https://farm9.staticflickr.com/8609/16169099399_bd393db803.jpg">
             </div><!-- /#avatar-cropper -->
+            <span id="feedback-caption-label">error: image could not be imported</span>
 
-            <div id="control-group-container">
-              <label id="image-url-feedback" for="image-url" class="control-group-label">error: image could not be imported</label>
-              <div class="control-group">
-                <input id="upload-button" class="control-group-button btn btn-primarybtn-sm btn-normalize" type="button" value="upload file">
-                <input id="image-url" class="form-control control-group-input" type="text" placeholder="or paste image url here">
-              </div><!-- /.control-group -->
-            </div><!-- /.control-group-container -->
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button class="btn btn-default btn-primary" type="button">upload file</button>
+              </span><!-- /.input-group-btn -->
+              <input id="image-url" class="form-control" type="text" placeholder="or paste image url here">
+            </div><!-- /.input-group -->
+
+            <!--<div id="control-group-container">-->
+            <!--  <label id="image-url-feedback" for="image-url" class="control-group-label">error: image could not be imported</label>-->
+            <!--  <div class="control-group">-->
+            <!--    <input id="upload-button" class="control-group-button btn btn-primarybtn-sm btn-normalize" type="button" value="upload file">-->
+            <!--    <input id="image-url" class="form-control control-group-input" type="text" placeholder="or paste image url here">-->
+              <!--</div>-->
+              <!-- /.control-group -->
+            <!--</div>-->
+            <!-- /.control-group-container -->
 
           </div><!-- /.modal-body -->
         </div><!-- /.modal-content -->
