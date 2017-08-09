@@ -11,55 +11,23 @@
 
             <img id="test-image">
 
-            <div class="control-container">
-              <span id="info-button" class="inline-block pull-left" tabindex="0" data-toggle="popover" data-trigger="focus" title="click for info" data-content="drag and drop your local or web image onto the cropping tool, or else use the form control to either upload your image file or specify an image url on the web">
-                <i class="fa fa-info-circle" title="click for info"></i>
-              </span>
-              <span class="text-center">
-                <button id="crop-button" class="inline-block btn btn-primary btn-sm btn-normalize">crop image</button>
-              </span>
-              <span id="close-button" class="inline-block pull-right" data-dismiss="modal">
-                <i class="fa fa-close" title="close dialog window"></i>
-              </span>
-            </div>
-
-            <!--<div class="row">-->
-            <!--  <div class="col-xs-4 col-sm-2">-->
-            <!--    <span class="text-center">-->
-            <!--      <button id="crop-button" class="btn btn-primary btn-sm btn-normalize">crop image</button>-->
-            <!--    </span>-->
-            <!--  </div><!-- /.col -->
-
-            <!--  <div class="col-xs-8 col-sm-10">-->
-            <!--    <div id="close-button" class="pull-right" data-dismiss="modal">-->
-            <!--      <i class="fa fa-close"></i>-->
-                  <!--&times;-->
-            <!--    </div>-->
-            <!--    <div id="info-button" class="pull-left" tabindex="0" data-toggle="popover" data-trigger="focus" title="click for info" data-content="drag and drop your local or web image onto the cropping tool, or else use the form control to either upload your image file or specify an image url on the web">-->
-            <!--      <i class="fa fa-info-circle"></i>-->
-            <!--    </div><!-- /#info-button -->
-            <!--  </div><!-- /.col -->
-            <!--</div><!-- /.row -->
-
-            <!--<i class="fa fa-info-circle" onclick="showInfoPop()" onhover="showInfoPop()" data-toggle="tooltip" data-placement="left"></i>-->
+            <div class="flex-container">
+              <button id="crop-button" class="btn btn-primary btn-sm btn-normalize">crop image</button>
+              <i id="info-button" class="fa fa-info-circle" title="click for info"></i>
+              <span id="info-label" class="">drag and drop <span id="info-label-line2">an image below</span></span>
+              <i id="close-button" class="fa fa-close" title="close dialog window"></i>
+            </div><!-- /.flex-container -->
 
             <div id="avatar-cropper">
               <img id="cropper-image" src="https://farm9.staticflickr.com/8609/16169099399_bd393db803.jpg">
-            </div><!-- /#avatar-croppe -->
-
-            <!--<div class="caption-container">-->
-            <!--  <div id="cropper-caption"></div>-->
-            <!--</div>-->
+            </div><!-- /#avatar-cropper -->
 
             <div id="control-group-container">
-              <!--<span id="image-url-feedback" class="control-group-feedback">error loading image</span>-->
-              <label for="image-url" class="control-group-label">error: image could not be imported</label>
-          <!--<label for="image-url" class="control-group-label">error while loading the file or url w</label>-->
+              <label id="image-url-feedback" for="image-url" class="control-group-label">error: image could not be imported</label>
               <div class="control-group">
                 <input id="upload-button" class="control-group-button btn btn-primarybtn-sm btn-normalize" type="button" value="upload file">
                 <input id="image-url" class="form-control control-group-input" type="text" placeholder="or paste image url here">
               </div><!-- /.control-group -->
-              <!--<label for="image-url" class="control-group-label">or drag and drop file or web image</label>-->
             </div><!-- /.control-group-container -->
 
           </div><!-- /.modal-body -->
@@ -99,19 +67,19 @@
               </h6><!-- /.text-center -->
 
               <div class="text-center">
-  <% /* for site-admins, if not viewing their own profile, display the appropriate admin-button */
-     if (currentUser && currentUser.is_admin && user.username !== currentUser.username) { %>
-    <% if (user.is_suspended) { %>
+<% /* for site-admins, if not viewing their own profile, display the appropriate admin-button */
+   if (currentUser && currentUser.is_admin && user.username !== currentUser.username) { %>
+  <% if (user.is_suspended) { %>
                 <button id="reinstate-button" class="profile-button btn btn-success btn-sm btn-normalize" href="javascript:adminForm.submit()">reinstate user</button>
-    <% } else { %>
+  <% } else { %>
                 <button id="suspend-button" class="profile-button btn btn-danger btn-sm btn-normalize" href="javascript:suspendUser()">suspend user</button>
-    <% } %>
   <% } %>
+<% } %>
 
-  <% /* for site-users, if viewing their own profile and not suspended, display the form-submit button */
-     if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
+<% /* for site-users, if viewing their own profile and not suspended, display the form-submit button */
+   if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                 <button id="save-button" class="profile-button btn btn-primary btn-sm btn-normalize" type="submit" disabled="disabled">save changes</button>
-  <% } %>
+<% } %>
               </div><!-- /.text-center [profile-buttons] -->
 
             </div><!-- /.col [left] -->
@@ -124,12 +92,12 @@
                   <i class="undo-button fa fa-undo" title="undo edit" data-input="first-name-input" data-undo="first-name-undo" data-changed="firstName"></i>
                 </span><!-- /.pull-right -->
                 <input id="first-name-undo" type="hidden" value="<%= user.first_name %>">
-  <% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
+<% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                 <input id="first-name-input" class="form-control" type="text" name="user[first_name]" placeholder="first name" value="<%= user.first_name %>" data-changed="firstName">
-  <% } else { %>
+<% } else { %>
                 <input id="first-name-input" class="form-control" type="text" name="user[first_name]" placeholder="first name" value="<%= user.first_name %>" readonly>
-  <% } %>
+<% } %>
               </div><!-- /.form-group [first-name] -->
 
               <div class="form-group">
@@ -138,12 +106,12 @@
                   <i class="undo-button fa fa-undo" title="undo edit" data-input="last-name-input" data-undo="last-name-undo" data-changed="lastName"></i>
                 </span><!-- /.pull-right -->
                 <input id="last-name-undo" type="hidden" value="<%= user.last_name %>">
-  <% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
+<% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                 <input id="last-name-input" class="form-control" type="text" name="user[last_name]" placeholder="last name" value="<%= user.last_name %>" data-changed="lastName">
-  <% } else { %>
+<% } else { %>
                 <input id="last-name-input" class="form-control" type="text" name="user[last_name]" placeholder="last name" value="<%= user.last_name %>" readonly>
-  <% } %>
+<% } %>
               </div><!-- /.form-group [last-name] -->
 
               <div class="form-group">
@@ -152,12 +120,12 @@
                   <i class="undo-button fa fa-undo" title="undo edit" data-input="email-address-input" data-undo="email-address-undo" data-changed="emailAddress"></i>
                 </span><!-- /.pull-right -->
                 <input id="email-address-undo" type="hidden" value="<%= user.email_address %>">
-  <% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
+<% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                 <input id="email-address-input" class="form-control" type="text" name="user[email_address]" placeholder="email address" value="<%= user.email_address %>" data-changed="emailAddress">
-  <% } else { %>
+<% } else { %>
                 <input id="email-address-input" class="form-control" type="text" name="user[email_address]" placeholder="email address" value="<%= user.email_address %>" readonly>
-  <% } %>
+<% } %>
               </div><!-- /.form-group [email-address] -->
 
               <div class="form-group">
@@ -166,12 +134,12 @@
                   <i class="undo-button fa fa-undo" title="undo edit" data-input="biography-input" data-undo="biography-undo" data-changed="biography"></i>
                 </span><!-- /.pull-right -->
                 <input id="biography-undo" type="hidden" value="<%= user.biography %>">
-  <% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
+<% /* for site-users, if viewing their own profile and not suspended, make the form fields editable */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                 <textarea id="biography-input" class="form-control" rows="4" name="user[biography]" placeholder="biography" data-changed="biography"><%= user.biography %></textarea>
-  <% } else { %>
+<% } else { %>
                 <textarea id="biography-input" class="form-control" rows="4" name="user[biography]" placeholder="biography" readonly><%= user.biography %></textarea>
-  <% } %>
+<% } %>
               </div><!-- /.form-group [biography] -->
 
             </div><!-- /.col [right] -->

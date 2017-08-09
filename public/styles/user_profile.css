@@ -40,7 +40,7 @@
 * { border: 1px solid black !important; }*/
 
 /*
-i { border: 1px solid red !important; }*/
+span { border: 1px solid red !important; }*/
 
 /*
 .row { border: 1px solid orange !important; }*/
@@ -60,7 +60,7 @@ i { border: 1px solid red !important; }*/
 /*
 div[class^="col-"], div[class*=" col-"] { border: 1px solid green !important; }*/
 
-/****  DEBUG SECTION ABOVE THIS LINE *********************/
+/****  DEBUG SECTION ABOVE THIS LINE  ********************/
 
 *,
 *::before,
@@ -69,6 +69,14 @@ div[class^="col-"], div[class*=" col-"] { border: 1px solid green !important; }*
   padding: 0;
   font-size: 18px;
 }
+
+/********************/
+
+/*
+.no-gutter {
+  padding-left: 0;
+  padding-right: 0;
+}*/
 
 /********************/
 
@@ -121,19 +129,50 @@ body {
   /*text-align: center;*/
 }
 
-.control-container {
-  margin-bottom: 12px;
+/********************/
+
+.flex-container {
+  display: flex;
 }
 
 #crop-button {
-  margin: 0 8px;
+  /*height: 34px;*/
+}
+
+#info-button {
+  margin: 0 4px 0 12px;
+  cursor: pointer;
+}
+
+#info-label {
+  margin-top: -2px;
+  margin-right: 4px;
+  line-height: 1.2;
+  font-size: 0.9em;
+  flex-grow: 2;
+  cursor: pointer;
+}
+
+#info-label-line2 {
+  font-size: inherit;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+#close-button {
+  margin-top: -2px;
+  margin-left: 4px;
+  cursor: pointer;
 }
 
 /********************/
 
+#avatar-chooser-dialog {
+  margin-top: 25px;
+}
+
 #avatar-cropper {
-  margin: 0 auto;
-  /*width: 300px;*/
+  margin: 12px auto;
 }
 
 #cropper-image {
@@ -141,12 +180,6 @@ body {
 }
 
 /********************/
-
-/*
-.no-gutter {
-  padding-left: 0;
-  padding-right: 0;
-}*/
 
 .inline {
   display: inline;
@@ -303,6 +336,7 @@ ul.nested-list .item-red>a {
   color: #5f5f5f;
   /*   font-weight: 600; */
   font-style: italic;
+  font-size: 0.9em;
 }
 
 .control-group-input {
