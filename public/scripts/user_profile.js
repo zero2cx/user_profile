@@ -17,7 +17,7 @@ var inputConfirmPassword = $('#confirm-password-input');
 /* declare the dom-elements of the avatar-chooser */
 var chooserAvatar = $('#avatar-chooser');
 var imageTest = $('#test-image');
-var buttonCropAvatar = $('#crop-avatar-button');
+var buttonDone = $('#done-button');
 var buttonInfo = $('#info-button');
 var labelInfoTop = $('#info-top-label');
 var buttonCloseDialog = $('#close-dialog-button');
@@ -59,7 +59,7 @@ chooserAvatar.on('shown.bs.modal', function(e) {
 hiddenUploadFile.on('change', function() {
   // var fileType = $(this).val().split('.').pop().toLowerCase();
   // if (fileType !== 'jpg' && fileType !== 'png' && fileType !== 'gif' && fileType !== 'svg') {
-    //   alert('error: file-type must be one of jpg, png, gif, or svg');
+  //   alert('error: file-type must be one of jpg, png, gif, or svg');
   //   return;
   // }
   // upload the image file
@@ -81,7 +81,6 @@ inputUrl.on('input', function() {
     inputUrl.css('background-color', '#ffffff');
     buttonEditImage.hide();
     buttonUploadFile.show();
-    uploadedFile = false;
   }
   else {
     buttonUploadFile.hide();

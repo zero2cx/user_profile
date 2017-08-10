@@ -122,7 +122,8 @@ body {
 
 #avatar-cropper {
   position: relative;
-  margin: 12px auto 0;
+  max-height: 300px;
+  margin: 0 auto;
 }
 
 #cropper-image {
@@ -142,7 +143,12 @@ body {
   cursor: pointer;
 }
 
-#crop-avatar-button,
+#done-button {
+  padding: 6px 12px;
+  max-height: 34px;
+  font-size: 1.1em;
+}
+
 #info-top-label {
   margin-right: 8px;
 }
@@ -151,25 +157,27 @@ body {
   margin-top: -2px;
 }
 
-#info-top-button,
+#info-top-button {
+  margin-top: 20px;
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
 #info-top-label {
-  margin: 4px;
+  margin-top: 20px;
+  margin-left: 4px;
+  margin-bottom: 8px;
 }
 
 #info-top-label {
   line-height: 1.2;
-  font-size: 0.9em;
+  /*font-size: 0.9em;*/
   flex-grow: 2;
-}
-
-#info-top-label-wrap {
-  line-height: inherit;
-  font-size: inherit;
   white-space: nowrap;
 }
 
 #close-dialog-button {
-  margin-left: 4px;
+  /*margin-left: 4px;*/
 }
 
 /********************/
@@ -189,9 +197,14 @@ body {
   white-space: nowrap
 }
 
+#info-bottom-button {
+  margin-bottom: 4px;
+}
+
 #info-bottom-label {
+  /*margin-bottom: 14px;*/
   line-height: 1.2;
-  font-size: 0.9em;
+  /*font-size: 0.9em;*/
 }
 
 #upload-file-button,
