@@ -1,17 +1,24 @@
-<% /* file: views/partials/page-footer.ejs            */ %>
+<% /* file: views/partials/view-footer.ejs            */ %>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.js"></script>
     <script src="/scripts/user_profile.js"></script>
-<% if (uploadFile) { %>
+
+<% /**
+    * for site-users viewing their own profile and not suspended, include
+    * the uploadFile-trigger for the avatar-chooser modal
+    */ %>
+<% if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
+  <% if (uploadFile) { %>
     <script type="text/javascript">
-      // $(window).on('load', function(){
       $(document).ready(function(){
-        chooserAvatar.modal('show');
-        chooserAvatar.addClass('fade');
+        modalAvatarChooser.modal('show');
+        modalAvatarChooser.addClass('fade');
       });
     </script>
+  <% } %>
 <% } %>
+
   </body>
 </html>

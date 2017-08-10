@@ -1,0 +1,45 @@
+<% /* file: views/partials/avatar-chooser.ejs         */ %>
+
+<% if (uploadFile) { %>
+    <div id="avatar-chooser-modal" class="modal" tabindex="-1">
+<% } else { %>
+    <div id="avatar-chooser-modal" class="modal fade" tabindex="-1">
+<% } %>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+
+            <img id="test-image">
+
+            <div class="flex-container">
+              <button id="done-button" class="btn btn-primary btn-sm">done</button>
+              <i id="info-top-button" class="fa fa-info-circle"></i>
+              <span id="info-top-label">drag an image, drop it below</span>
+              <i id="close-dialog-button" class="fa fa-close" title="close dialog window" data-dismiss="modal"></i>
+            </div><!-- /.flex-container -->
+
+            <div id="avatar-cropper">
+<% if (uploadFile) { %>
+              <img id="cropper-image" src="<%= uploadFile %>">
+<% } else { %>
+              <img id="cropper-image" src="https://farm9.staticflickr.com/8609/16169099399_bd393db803.jpg">
+<% } %>
+              <div id="feedback-label">error: image could not be imported</div>
+            </div><!-- /#avatar-cropper -->
+            <i id="info-bottom-button" class="fa fa-info-circle"></i>
+            <span id="info-bottom-label">upload or specify an image resource</span>
+
+            <div class="input-group">
+              <span class="input-group-btn">
+                <form action="/user/<%= user._id %>/upload" method="post" enctype="multipart/form-data">
+                  <label id="upload-file-button" class="btn btn-default btn-primary">upload file<input id="upload-file-hidden" name="upload_file" type="file" class="hidden"></label>
+                </form>
+                <button id="edit-image-button" class="btn btn-default btn-primary" type="button">edit image</button>
+              </span><!-- /.input-group-btn -->
+              <input id="url-input" class="form-control" type="text" placeholder="or paste image url here">
+            </div><!-- /.input-group -->
+
+          </div><!-- /.modal-body -->
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->

@@ -14,8 +14,8 @@ var formNewUser = $('#new-user-form');
 var inputPassword = $('#password-input');
 var inputConfirmPassword = $('#confirm-password-input');
 /*********************************************************/
-/* declare the dom-elements of the avatar-chooser */
-var chooserAvatar = $('#avatar-chooser');
+/* declare the dom-elements of the avatar-chooser modal */
+var modalAvatarChooser = $('#avatar-chooser-modal');
 var imageTest = $('#test-image');
 var buttonDone = $('#done-button');
 var buttonInfo = $('#info-button');
@@ -33,23 +33,24 @@ var changed = {
   firstName: false,
   lastName: false,
   emailAddress: false,
-  biography: false
+  biography: false,
+  avatar: false
 };
 
 /*********************************************************/
 
 /**
- * when the avatar-image is clicked, show the avatar-chooser popup dialog
+ * when the avatar-image is clicked, show the avatar-chooser modal
  */
-imageAvatar.on('click ', function() {
-  chooserAvatar.modal();
-});
+// imageAvatar.on('click ', function() {
+//   chooserAvatar.modal();
+// });
 
 /**
- * when the avatar-chooser is finished loading, overlay the
- * image-cropper on top of the cropper-image
+ * when the avatar-chooser modal is finished loading,
+ * overlay the image-cropper on top of the cropper-image
  */
-chooserAvatar.on('shown.bs.modal', function(e) {
+modalAvatarChooser.on('shown.bs.modal', function(e) {
   imageCropper.cropper({
     aspectRatio: 1,
     background: false,
@@ -66,13 +67,16 @@ chooserAvatar.on('shown.bs.modal', function(e) {
 });
 
 /**
- * when the done-button is clicked, copy the cropped-image canvas to the
- * avatar-image's src attribute, and close the avatar-chooser dialog
+ * when the done-button is clicked, copy the cropped-image canvas to
+ * the avatar-image's src attribute, and close the avatar-chooser modal
  */
 buttonDone.on('click', function() {
   var cropImage = imageCropper.cropper('getCroppedCanvas').toDataURL('image/png');
   imageAvatar.attr('src', cropImage);
-  chooserAvatar.modal('hide');
+  imageAvatar.prev().css('visibility', 'visible');
+  changed['avatar'] = true;
+  buttonSave.attr('disabled', false)
+  modalAvatarChooser.modal('hide');
   // [TODO] SHOW THE UNDO BUTTON FOR THE AVATAR
 });
 
@@ -150,8 +154,8 @@ inputUrl.on('input', function() {
 /*********************************************************/
 
 /**
- * when any text-input value has changed on the profile-form, make
- * visible the text-input's associated undo-button
+ * when any text-input value has changed or the avatar-url on the
+ * profile-form, make visible the text-input's associated undo-button
  */
 $('.form-control').on('input', function() {
   $(this).prev().children().css('visibility', 'visible');
@@ -167,6 +171,6 @@ $('.undo-button').on('click', function() {
   $('#' + $(this).attr('data-input')).val($('#' + $(this).attr('data-undo')).val());
   $(this).css('visibility', 'hidden');
   changed[$(this).attr('data-changed')] = false;
-  if (changed.firstName || changed.lastName || changed.emailAddress || changed.biography) return;
+  if (changed.firstName || changed.lastName || changed.emailAddress || changed.biography || changed.avatar) return;
   buttonSave.attr('disabled', true);
 });

@@ -104,20 +104,20 @@ body {
 
 /********************/
 
-.avatar-thumbnail:hover {
+.avatar-thumbnail.editable:hover {
   opacity: 0.8;
+  cursor: pointer;
 }
 
 .avatar-thumbnail {
   margin: 0 auto;
   width: 166px;
   height: 166px;
-  cursor: pointer;
 }
 
 /********************/
 
-#avatar-chooser {
+#avatar-chooser-modal {
   margin-top: 25px;
 }
 
@@ -197,15 +197,6 @@ body {
   margin-top: 8px;
   margin-bottom: 4px;
 }
-
-/*#info-bottom-label{
-   */
-
-/*  margin-top: 6px;*/
-
-/*  line-height: 1.4;*/
-
-/*}*/
 
 #upload-file-button,
 #edit-image-button {
