@@ -4,5 +4,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.4/cropper.min.js"></script>
     <script src="/scripts/user_profile.js"></script>
+<% if (uploadFile) { %>
+    <script type="text/javascript">
+      // $(window).on('load', function(){
+      $(document).ready(function(){
+        chooserAvatar.modal('show');
+        chooserAvatar.addClass('fade');
+      });
+    </script>
+<% } %>
   </body>
 </html>

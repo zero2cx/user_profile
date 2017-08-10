@@ -3,7 +3,11 @@
 <% include ../partials/page-header %>
 
 <!---------------------------------->
-    <div id="avatar-chooser-dialog" class="modal fade" tabindex="-1">
+<% if (uploadFile) { %>
+    <div id="avatar-chooser" class="modal" tabindex="-1">
+<% } else { %>
+    <div id="avatar-chooser" class="modal fade" tabindex="-1">
+<% } %>
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body">
@@ -11,33 +15,32 @@
             <img id="test-image">
 
             <div class="flex-container">
-              <button id="crop-button" class="btn btn-primary btn-sm btn-normalize">crop image</button>
-              <i id="info-button" class="fa fa-info-circle" title="click for info"></i>
-              <span id="info-label" class="">drag and drop <span id="info-label-line2">an image below</span></span>
-              <i id="close-button" class="fa fa-close" title="close dialog window"></i>
+              <button id="crop-avatar-button" class="btn btn-primary btn-sm">crop avatar</button>
+              <i id="info-top-button" class="fa fa-info-circle" title="click for info"></i>
+              <span id="info-top-label">drag and drop <span id="info-top-label-wrap">an image below</span></span>
+              <i id="close-dialog-button" class="fa fa-close" title="close dialog window"></i>
             </div><!-- /.flex-container -->
 
             <div id="avatar-cropper">
+<% if (uploadFile) { %>
+              <img id="cropper-image" src="<%= uploadFile %>">
+<% } else { %>
               <img id="cropper-image" src="https://farm9.staticflickr.com/8609/16169099399_bd393db803.jpg">
+<% } %>
+              <div id="feedback-label">error: image could not be imported</div>
             </div><!-- /#avatar-cropper -->
-            <span id="feedback-caption-label">error: image could not be imported</span>
+            <i id="info-bottom-button" class="fa fa-info-circle" title="click for info"></i>
+            <span id="info-bottom-label">drag and drop an image below</span>
 
             <div class="input-group">
               <span class="input-group-btn">
-                <button class="btn btn-default btn-primary" type="button">upload file</button>
+                <form action="/user/<%= user._id %>/upload" method="post" enctype="multipart/form-data">
+                  <label id="upload-file-button" class="btn btn-default btn-primary">upload file<input id="upload-file-hidden" name="upload_file" type="file" class="hidden"></label>
+                </form>
+                <button id="edit-image-button" class="btn btn-default btn-primary" type="button">edit image</button>
               </span><!-- /.input-group-btn -->
-              <input id="image-url" class="form-control" type="text" placeholder="or paste image url here">
+              <input id="url-input" class="form-control" type="text" placeholder="or paste image url here">
             </div><!-- /.input-group -->
-
-            <!--<div id="control-group-container">-->
-            <!--  <label id="image-url-feedback" for="image-url" class="control-group-label">error: image could not be imported</label>-->
-            <!--  <div class="control-group">-->
-            <!--    <input id="upload-button" class="control-group-button btn btn-primarybtn-sm btn-normalize" type="button" value="upload file">-->
-            <!--    <input id="image-url" class="form-control control-group-input" type="text" placeholder="or paste image url here">-->
-              <!--</div>-->
-              <!-- /.control-group -->
-            <!--</div>-->
-            <!-- /.control-group-container -->
 
           </div><!-- /.modal-body -->
         </div><!-- /.modal-content -->
@@ -67,7 +70,7 @@
 
               <div class="avatar-container center-block">
                 <i class="undo-button fa fa-undo" title="undo edit" data-input="avatar-input" data-undo="avatar-undo" data-changed="avatar"></i>
-                <img id="avatar-image" class="thumbnail avatar-thumbnail" alt="avatar" src="<%= user.avatar_url %>" data-toggle="modal" data-target="#avatar-chooser">
+                <img id="avatar-image" class="thumbnail avatar-thumbnail" alt="avatar" src="<%= user.avatar_url %>">
               </div><!-- /.avatar-container -->
               <input type="hidden" name="avatar_url" value="<%= user.avatar_url %>">
 

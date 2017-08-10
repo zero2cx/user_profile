@@ -15,11 +15,18 @@ var inputPassword = $('#password-input');
 var inputConfirmPassword = $('#confirm-password-input');
 /*********************************************************/
 /* declare the dom-elements of the avatar-chooser */
-var dialogAvatarChooser = $('#avatar-chooser-dialog');
-var imageCropper = $('#cropper-image');
-var inputCropperUrl = $('#cropper-url-input');
+var chooserAvatar = $('#avatar-chooser');
 var imageTest = $('#test-image');
-// var containerCropper = $('#cropper-container');
+var buttonCropAvatar = $('#crop-avatar-button');
+var buttonInfo = $('#info-button');
+var labelInfoTop = $('#info-top-label');
+var buttonCloseDialog = $('#close-dialog-button');
+var imageCropper = $('#cropper-image');
+var labelFeedback = $('#feedback-label');
+var buttonUploadFile = $('#upload-file-button');
+var hiddenUploadFile = $('#upload-file-hidden');
+var buttonEditImage = $('#edit-image-button');
+var inputUrl = $('#url-input');
 /*********************************************************/
 /* declare global-variables */
 var changed = {
@@ -32,54 +39,97 @@ var changed = {
 /*********************************************************/
 
 /**
- * when the avatar-image is clicked, show the avatar-chooser dialog
+ * when the avatar-image is clicked, show the avatar-chooser popup dialog
  */
-imageAvatar.on('click', function() {
-  dialogAvatarChooser.modal();
+imageAvatar.on('click ', function() {
+  chooserAvatar.modal();
 });
 
 /**
- * when the modal-dialog is finished loading, overlay the
+ * when the avatar-chooser is finished loading, overlay the
  * image-cropper on top of the cropper-image
  */
-dialogAvatarChooser.on('shown.bs.modal', function(e) {
-  // alert('new cropper')
+chooserAvatar.on('shown.bs.modal', function(e) {
   imageCropper.cropper({
     aspectRatio: 1,
     background: false
   });
 });
 
+hiddenUploadFile.on('change', function() {
+  // var fileType = $(this).val().split('.').pop().toLowerCase();
+  // if (fileType !== 'jpg' && fileType !== 'png' && fileType !== 'gif' && fileType !== 'svg') {
+    //   alert('error: file-type must be one of jpg, png, gif, or svg');
+  //   return;
+  // }
+  // upload the image file
+  $(this).prop('form').submit();
+
+  // inputUrl.val(hiddenUploadFile.val().split('\\').pop());
+  // uploadedFile = true;
+  // buttonUploadFile.hide();
+  // buttonEditImage.show();
+});
+
 /**
  * when the image-url changes in the text-input, try to load
- * that image-url into the hidden test-image
+ * that image-url into the non-visible test-image
  */
-inputCropperUrl.on('input', function() {
-  imageTest.attr('src', inputCropperUrl.val());
+inputUrl.on('input', function() {
+  if (inputUrl.val() === '') {
+    labelFeedback.css('visibility', 'hidden');
+    inputUrl.css('background-color', '#ffffff');
+    buttonEditImage.hide();
+    buttonUploadFile.show();
+    uploadedFile = false;
+  }
+  else {
+    buttonUploadFile.hide();
+    buttonEditImage.show();
+  }
 });
+
+
+// buttonEditImage.on('click', function() {
+//   // if (uploadedFile) {
+//   //   imageTest.attr('src', hiddenUploadFile.val());
+//   // }
+//   // else {
+//   imageTest.attr('src', inputUrl.val());
+//   // }
+// });
 
 /**
  * when an image-url successfully loads into the test-image,
  * load that image-url into the cropper-image
  */
-imageTest.on('load', function() {
-  imageCropper.cropper('replace', $(this).attr('src'));
-});
+// imageTest.on('load', function() {
+//   if (imageTest.prop('width') === 500 && imageTest.prop('height') === 374) {
+//     console.log('error: cannot load image ' + imageTest.prop('src'));
+//     labelFeedback.css('visibility', 'visible');
+//     inputUrl.css('background-color', '#ffbfbf');
+//   }
+//   else {
+//     labelFeedback.show(); //css('visibility', 'hidden');
+//     inputUrl.css('background-color', '#ffffff');
+//     imageCropper.cropper('replace', $(this).attr('src'));
+//   }
+// });
 
 /**
- * when the image-url fails to load into the test-image, inform
- * the user, and change the text-input's background color to red
+ * when the image-url fails to load into the test-image, show the error
+ * feedback-label, and change the text-input's background color to red
  */
-imageTest.on('error', function() {
-  alert('** error: not a valid image url');
-  inputCropperUrl.css('background-color', '#ffbfbf');
-});
+// imageTest.on('error', function() {
+//   labelFeedback.css('visibility', 'visible');
+//   inputUrl.css('background-color', '#ffbfbf');
+// });
 
 /*********************************************************/
 
 /**
- * when any text-input's value has changed, show the text-input's
- * associated undo-button
+ * when any text-input value has changed on the profile-form, make
+ * visible the text-input's associated undo-button
  */
 $('.form-control').on('input', function() {
   $(this).prev().children().css('visibility', 'visible');
@@ -88,8 +138,8 @@ $('.form-control').on('input', function() {
 });
 
 /**
- * when any undo-button is clicked, reset the value of its
- * associated text-input and hide the undo-button
+ * when any undo-button is clicked on the profile-form, reset the
+ * value of its associated text-input, and hide the undo-button
  */
 $('.undo-button').on('click', function() {
   $('#' + $(this).attr('data-input')).val($('#' + $(this).attr('data-undo')).val());

@@ -110,16 +110,23 @@ body {
 
 /********************/
 
-#avatar-chooser-dialog {
+#avatar-chooser {
   margin-top: 25px;
 }
 
+#test-image {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 #avatar-cropper {
+  position: relative;
   margin: 12px auto 0;
 }
 
 #cropper-image {
-  max-width: 100%;
+  width: 100%;
 }
 
 /********************/
@@ -128,50 +135,72 @@ body {
   display: flex;
 }
 
-#info-button,
-#info-label,
-#info-label-line2,
-#close-button {
+#info-top-button,
+#info-top-label,
+#info-top-label-wrap,
+#close-dialog-button {
   cursor: pointer;
 }
 
-#crop-button,
-#info-label {
+#crop-avatar-button,
+#info-top-label {
   margin-right: 8px;
 }
 
-#info-label,
-#close-button {
+#close-dialog-button {
   margin-top: -2px;
 }
 
-#info-button {
-  margin: 0 4px;
+#info-top-button,
+#info-top-label {
+  margin: 4px;
 }
 
-#info-label {
+#info-top-label {
   line-height: 1.2;
   font-size: 0.9em;
   flex-grow: 2;
 }
 
-#info-label-line2 {
+#info-top-label-wrap {
   line-height: inherit;
   font-size: inherit;
   white-space: nowrap;
 }
 
-#close-button {
+#close-dialog-button {
   margin-left: 4px;
 }
 
 /********************/
 
-#feedback-caption-label {
-  visibility: hidden;
-  color: #5f5f5f;
-  font-style: italic;
+#feedback-label {
+  position: absolute;
+  display: none;
+  width: 250px;
+  left: 50%;
+  bottom: 0px;
+  margin-left: -125px;
+  color: #efef3f;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-shadow: -1px 0 #3f3f3f, 0 1px #3f3f3f, 1px 0 #3f3f3f, 0 -1px #3f3f3f;
+  z-index: 99;
+  white-space: nowrap
+}
+
+#info-bottom-label {
+  line-height: 1.2;
   font-size: 0.9em;
+}
+
+#upload-file-button,
+#edit-image-button {
+  border-radius: 4px 0 0 4px;
+}
+
+#edit-image-button {
+  display: none;
 }
 
 /********************/
