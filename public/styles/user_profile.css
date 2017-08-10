@@ -78,6 +78,13 @@ body {
 
 /********************/
 
+.btn:focus,
+.btn:active {
+  outline: none;
+}
+
+/********************/
+
 .profile-container {
   margin-top: 10px;
   max-width: 600px;
@@ -136,9 +143,6 @@ body {
   display: flex;
 }
 
-#info-top-button,
-#info-top-label,
-#info-top-label-wrap,
 #close-dialog-button {
   cursor: pointer;
 }
@@ -149,35 +153,27 @@ body {
   font-size: 1.1em;
 }
 
+#info-top-button,
 #info-top-label {
-  margin-right: 8px;
-}
-
-#close-dialog-button {
-  margin-top: -2px;
+  /*margin-top: 20px;*/
+  margin-bottom: 8px;
 }
 
 #info-top-button {
   margin-top: 20px;
   margin-left: 8px;
-  margin-bottom: 8px;
 }
 
 #info-top-label {
-  margin-top: 20px;
+  margin-top: 18px;
   margin-left: 4px;
-  margin-bottom: 8px;
-}
-
-#info-top-label {
   line-height: 1.2;
-  /*font-size: 0.9em;*/
   flex-grow: 2;
   white-space: nowrap;
 }
 
 #close-dialog-button {
-  /*margin-left: 4px;*/
+  margin-top: -2px;
 }
 
 /********************/
@@ -198,14 +194,18 @@ body {
 }
 
 #info-bottom-button {
+  margin-top: 8px;
   margin-bottom: 4px;
 }
 
-#info-bottom-label {
-  /*margin-bottom: 14px;*/
-  line-height: 1.2;
-  /*font-size: 0.9em;*/
-}
+/*#info-bottom-label{
+   */
+
+/*  margin-top: 6px;*/
+
+/*  line-height: 1.4;*/
+
+/*}*/
 
 #upload-file-button,
 #edit-image-button {

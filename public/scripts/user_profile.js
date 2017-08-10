@@ -52,10 +52,33 @@ imageAvatar.on('click ', function() {
 chooserAvatar.on('shown.bs.modal', function(e) {
   imageCropper.cropper({
     aspectRatio: 1,
-    background: false
+    background: false,
+    crop: function(e) {
+      console.log(e.x);
+      console.log(e.y);
+      console.log(e.width);
+      console.log(e.height);
+      console.log(e.rotate);
+      console.log(e.scaleX);
+      console.log(e.scaleY);
+    }
   });
 });
 
+/**
+ * when the done-button is clicked, copy the cropped-image canvas to the
+ * avatar-image's src attribute, and close the avatar-chooser dialog
+ */
+buttonDone.on('click', function() {
+  var cropImage = imageCropper.cropper('getCroppedCanvas').toDataURL('image/png');
+  imageAvatar.attr('src', cropImage);
+  chooserAvatar.modal('hide');
+  // [TODO] SHOW THE UNDO BUTTON FOR THE AVATAR
+});
+
+/**
+ *
+ */
 hiddenUploadFile.on('change', function() {
   // var fileType = $(this).val().split('.').pop().toLowerCase();
   // if (fileType !== 'jpg' && fileType !== 'png' && fileType !== 'gif' && fileType !== 'svg') {
