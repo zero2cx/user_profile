@@ -7,9 +7,11 @@
 var imageAvatar = $('#avatar-image');
 var inputAvatarUndo = $('#avatar-undo-input');
 var buttonAvatarUndo = $('#avatar-undo-button');
+var inputAvatar = $('#avatar-input');
 var buttonReinstate = $('#reinstate-button');
 var buttonSuspend = $('#suspend-button');
 var buttonSave = $('#save-button');
+var formProfile = $('#profile-form');
 /*********************************************************/
 /* declare the dom-elements of the registration-form */
 var formNewUser = $('#new-user-form');
@@ -185,3 +187,11 @@ $('.undo-button').on('click', function() {
   if (changed.firstName || changed.lastName || changed.emailAddress || changed.biography || changed.avatar) return;
   buttonSave.attr('disabled', true);
 });
+
+/**
+ *
+ */
+function saveProfile() {
+  inputAvatar.val(imageAvatar.attr('src'));
+  formProfile.submit();
+}

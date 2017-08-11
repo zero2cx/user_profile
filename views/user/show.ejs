@@ -8,7 +8,7 @@
 <% } %>
 
     <div class="container profile-container">
-      <form name="profile_form" action="/user/<%= user._id %>" method="POST">
+      <form id="profile-form" name="profile_form" action="/user/<%= user._id %>" method="POST">
 
         <div class="profile-banner">
 <% /* for site admins, prefix the admin-badge to the username */
@@ -32,12 +32,13 @@
                 <i class="undo-button fa fa-undo" title="undo edit" data-target="avatar-image" data-undo="avatar-undo-input" data-changed="avatar"></i>
 <% /* for site-users viewing their own profile and not suspended, make the avatar-image editable */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
-                <img id="avatar-image" class="thumbnail avatar-thumbnail editable" onclick="modalAvatarChooser.modal()" alt="avatar" src="<%= user.avatar %>">
+                <img id="avatar-image" class="thumbnail avatar-thumbnail editable" onclick="modalAvatarChooser.modal()" alt="avatar image" src="<%= user.avatar %>">
 <% } else { %>
-                <img id="avatar-image" class="thumbnail avatar-thumbnail" alt="avatar" src="<%= user.avatar %>">
+                <img id="avatar-image" class="thumbnail avatar-thumbnail" alt="avatar image" src="<%= user.avatar %>">
 <% } %>
+<!--< %= user.avatar %>-->
               </div><!-- /.avatar-container -->
-              <input id="avatar-input" name="avatar" type="hidden" value="<%= user.avatar %>">
+              <input id="avatar-input" name="user[avatar]" type="hidden" value="<%= user.avatar %>">
 
               <h6 class="text-center dimmed"><em>join date:
                 <span id="join-date-banner"><%= user.join_date %></span></em>
@@ -55,7 +56,7 @@
 
 <% /* for site-users viewing their own profile and not suspended, display the form-submit button */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
-                <button id="save-button" class="profile-button btn btn-primary btn-sm btn-normalize" type="submit" disabled="disabled">save changes</button>
+                <button id="save-button" class="profile-button btn btn-primary btn-sm btn-normalize" onclick="saveProfile()" disabled="disabled">save changes</button>
 <% } %>
               </div><!-- /.text-center [profile-buttons] -->
 
