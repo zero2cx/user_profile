@@ -16,11 +16,11 @@ var inputConfirmPassword = $('#confirm-password-input');
 /*********************************************************/
 /* declare the dom-elements of the avatar-chooser modal */
 var modalAvatarChooser = $('#avatar-chooser-modal');
-var imageTest = $('#test-image');
+var imageLoadTest = $('#load-test-image');
 var buttonDone = $('#done-button');
 var buttonInfo = $('#info-button');
 var labelInfoTop = $('#info-top-label');
-var buttonCloseDialog = $('#close-dialog-button');
+// var buttonCloseModal = $('#close-modal-button');
 var imageCropper = $('#cropper-image');
 var labelFeedback = $('#feedback-label');
 var buttonUploadFile = $('#upload-file-button');
@@ -129,7 +129,7 @@ inputUrl.on('input', function() {
  * when an image-url successfully loads into the test-image,
  * load that image-url into the cropper-image
  */
-// imageTest.on('load', function() {
+// imageLoadTest.on('load', function() {
 //   if (imageTest.prop('width') === 500 && imageTest.prop('height') === 374) {
 //     console.log('error: cannot load image ' + imageTest.prop('src'));
 //     labelFeedback.css('visibility', 'visible');
@@ -146,7 +146,7 @@ inputUrl.on('input', function() {
  * when the image-url fails to load into the test-image, show the error
  * feedback-label, and change the text-input's background color to red
  */
-// imageTest.on('error', function() {
+// imageLoadTest.on('error', function() {
 //   labelFeedback.css('visibility', 'visible');
 //   inputUrl.css('background-color', '#ffbfbf');
 // });

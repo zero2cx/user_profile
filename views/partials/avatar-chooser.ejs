@@ -9,35 +9,53 @@
         <div class="modal-content">
           <div class="modal-body">
 
-            <img id="test-image">
+            <img id="load-test-image">
 
-            <div class="flex-container">
-              <button id="done-button" class="btn btn-primary btn-sm">done</button>
-              <i id="info-top-button" class="fa fa-info-circle"></i>
-              <span id="info-top-label">drag an image, drop it below</span>
-              <i id="close-dialog-button" class="fa fa-close" title="close dialog window" data-dismiss="modal"></i>
-            </div><!-- /.flex-container -->
+            <i id="close-modal-button" class="fa fa-close" title="close dialog window" data-dismiss="modal"></i>
+
+            <div class="cropper-caption">
+              <i id="cropper-caption-icon" class="fa fa-info-circle info-blue"></i>
+              <span id="cropper-caption-label">drag an image, then drop it below, or</span>
+            </div><!-- /.cropper-caption -->
 
             <div id="avatar-cropper">
 <% if (uploadFile) { %>
               <img id="cropper-image" src="<%= uploadFile %>">
 <% } else { %>
-              <img id="cropper-image" src="https://farm9.staticflickr.com/8609/16169099399_bd393db803.jpg">
+              <img id="cropper-image" src="<%= user.avatar %>">
 <% } %>
-              <div id="feedback-label">error: image could not be imported</div>
             </div><!-- /#avatar-cropper -->
-            <i id="info-bottom-button" class="fa fa-info-circle"></i>
-            <span id="info-bottom-label">upload or specify an image resource</span>
 
-            <div class="input-group">
-              <span class="input-group-btn">
-                <form action="/user/<%= user._id %>/upload" method="post" enctype="multipart/form-data">
-                  <label id="upload-file-button" class="btn btn-default btn-primary">upload file<input id="upload-file-hidden" name="upload_file" type="file" class="hidden"></label>
-                </form>
-                <button id="edit-image-button" class="btn btn-default btn-primary" type="button">edit image</button>
-              </span><!-- /.input-group-btn -->
-              <input id="url-input" class="form-control" type="text" placeholder="or paste image url here">
-            </div><!-- /.input-group -->
+            <div id="feedback-label">error: image could not be imported</div>
+
+            <div class="flex-container">
+
+              <div class="flex-item">
+                <div class="input-group">
+                  <span class="input-group-btn">
+                   <button id="load-button" class="btn btn-default btn-primary flex-button">load url</button>
+                  </span><!-- /.input-group-btn -->
+                  <input id="load-url-input" class="form-control" type="text" placeholder="&#xf05a; paste an internet image url, or">
+                </div><!-- /.input-group -->
+              </div><!-- /.flex-item -->
+
+              <div class="flex-item">
+                <button id="upload-button" class="btn btn-default btn-primary flex-button">upload</button>
+                <span class="flex-label">
+                  <i id="upload-button" class="fa fa-info-circle info-blue"></i>
+                  <span id="upload-bottom-label">upload an image file</span>
+                </span><!-- /.flex-label -->
+              </div><!-- /.flex-item -->
+
+              <div class="flex-item">
+                <button id="done-button" class="btn btn-default btn-primary flex-button">done</button>
+                <span class="flex-label">
+                  <i id="done-icon" class="fa fa-info-circle info-blue"></i>
+                  <span id="done-label">load, adjust crop, then click done</span>
+                </span><!-- /.flex-label -->
+              </div><!-- /.flex-item -->
+
+            </div><!-- /.flex-container -->
 
           </div><!-- /.modal-body -->
         </div><!-- /.modal-content -->
