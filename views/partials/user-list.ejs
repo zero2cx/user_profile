@@ -16,7 +16,7 @@ users.forEach(function(user) { %><%
                 <ul class="list-children"><%
 users.forEach(function(user) { %><%
   if (user.is_admin && !user.is_suspended) { %>
-                  <li class="list-child item-green"><a href="/user/<%= user._id %>"><%= user.username %></a></li><%
+                  <li class="list-child list-green"><a href="/user/<%= user._id %>"><%= user.username %></a></li><%
   } %><%
 }) %>
                 </ul><!-- /.list-children -->
@@ -25,7 +25,7 @@ users.forEach(function(user) { %><%
                 <ul class="list-children"><%
 users.forEach(function(user) { %><%
 if (user.is_suspended) { %>
-                  <li class="list-child item-red"><a href="/user/<%= user._id %>"><%= user.username %></a></li><%
+                  <li class="list-child list-red"><a href="/user/<%= user._id %>"><%= user.username %></a></li><%
   } %><%
 }) %>
                 </ul><!-- /.list-children -->
