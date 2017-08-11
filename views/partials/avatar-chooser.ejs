@@ -40,11 +40,13 @@
               </div><!-- /.flex-item -->
 
               <div class="flex-item">
-                <button id="upload-button" class="btn btn-default btn-primary flex-button">upload</button>
-                <span class="flex-label">
-                  <i id="upload-button" class="fa fa-info-circle info-blue"></i>
-                  <span id="upload-bottom-label">upload an image file</span>
-                </span><!-- /.flex-label -->
+                <form action="/user/<%= user._id %>/upload/" method="post" enctype="multipart/form-data">
+                  <label id="upload-button" class="btn btn-default btn-primary flex-button"><input id="upload-file-input" name="upload_file" type="file" accept="image/*" class="hidden">upload</label>
+                  <span class="flex-label">
+                    <i id="upload-button" class="fa fa-info-circle info-blue"></i>
+                    <span id="upload-bottom-label">upload an image file</span>
+                  </span><!-- /.flex-label -->
+                </form><!-- /form-->
               </div><!-- /.flex-item -->
 
               <div class="flex-item">

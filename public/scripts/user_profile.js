@@ -28,7 +28,7 @@ var labelInfoTop = $('#info-top-label');
 var imageCropper = $('#cropper-image');
 var labelFeedback = $('#feedback-label');
 var buttonUploadFile = $('#upload-file-button');
-var hiddenUploadFile = $('#upload-file-hidden');
+var inputUploadFile = $('#upload-file-input');
 var buttonEditImage = $('#edit-image-button');
 var inputUrl = $('#url-input');
 /*********************************************************/
@@ -87,7 +87,7 @@ buttonDone.on('click', function() {
 /**
  *
  */
-hiddenUploadFile.on('change', function() {
+inputUploadFile.on('change', function() {
   // var fileType = $(this).val().split('.').pop().toLowerCase();
   // if (fileType !== 'jpg' && fileType !== 'png' && fileType !== 'gif' && fileType !== 'svg') {
   //   alert('error: file-type must be one of jpg, png, gif, or svg');
@@ -133,18 +133,18 @@ inputUrl.on('input', function() {
  * when an image-url successfully loads into the test-image,
  * load that image-url into the cropper-image
  */
-// imageLoadTest.on('load', function() {
-//   if (imageTest.prop('width') === 500 && imageTest.prop('height') === 374) {
-//     console.log('error: cannot load image ' + imageTest.prop('src'));
-//     labelFeedback.css('visibility', 'visible');
-//     inputUrl.css('background-color', '#ffbfbf');
-//   }
-//   else {
-//     labelFeedback.show(); //css('visibility', 'hidden');
-//     inputUrl.css('background-color', '#ffffff');
-//     imageCropper.cropper('replace', $(this).attr('src'));
-//   }
-// });
+imageLoadTest.on('load', function() {
+  if (imageLoadTest.prop('width') === 500 && imageLoadTest.prop('height') === 374) {
+    console.log('error: cannot load image ' + imageLoadTest.prop('src'));
+    labelFeedback.css('visibility', 'visible');
+    inputUrl.css('background-color', '#ffbfbf');
+  }
+  else {
+    labelFeedback.show(); //css('visibility', 'hidden');
+    inputUrl.css('background-color', '#ffffff');
+    imageCropper.cropper('replace', $(this).attr('src'));
+  }
+});
 
 /**
  * when the image-url fails to load into the test-image, show the error
