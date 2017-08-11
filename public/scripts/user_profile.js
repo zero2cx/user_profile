@@ -5,6 +5,8 @@
 /*********************************************************/
 /* declare the dom-elements of the profile-form */
 var imageAvatar = $('#avatar-image');
+var inputAvatarUndo = $('#avatar-undo-input');
+var buttonAvatarUndo = $('#avatar-undo-button');
 var buttonReinstate = $('#reinstate-button');
 var buttonSuspend = $('#suspend-button');
 var buttonSave = $('#save-button');
@@ -164,11 +166,20 @@ $('.form-control').on('input', function() {
 });
 
 /**
- * when any undo-button is clicked on the profile-form, reset the
- * value of its associated text-input, and hide the undo-button
+ * when any undo-button is clicked, reset the value of its associated
+ * avatar-image or text-input, and then hide the undo-button, and then
+ * disable the save-changes button if this was the last remaining change
+ * to the form data
  */
 $('.undo-button').on('click', function() {
-  $('#' + $(this).attr('data-input')).val($('#' + $(this).attr('data-undo')).val());
+  if ($(this).attr('data-target') === 'avatar-image') {
+    // the avatar-image needs the src attribute to be undone
+    $('#' + $(this).attr('data-target')).attr('src', $('#' + $(this).attr('data-undo')).val());
+  }
+  else {
+    // the input-fields need the value attribute to be undone
+    $('#' + $(this).attr('data-target')).val($('#' + $(this).attr('data-undo')).val());
+  }
   $(this).css('visibility', 'hidden');
   changed[$(this).attr('data-changed')] = false;
   if (changed.firstName || changed.lastName || changed.emailAddress || changed.biography || changed.avatar) return;
