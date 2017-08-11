@@ -32,9 +32,9 @@
                 <i class="undo-button fa fa-undo" title="undo edit" data-input="avatar-input" data-undo="avatar-undo" data-changed="avatar"></i>
 <% /* for site-users viewing their own profile and not suspended, make the avatar-image editable */
    if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
-                <img id="avatar-image" class="thumbnail avatar-thumbnail editable" onclick="modalAvatarChooser.modal()" alt="avatar" src="<%= user.avatar_url %>">
+                <img id="avatar-image" class="thumbnail avatar-thumbnail editable" onclick="modalAvatarChooser.modal()" alt="avatar" src="<%= user.avatar %>">
 <% } else { %>
-                <img id="avatar-image" class="thumbnail avatar-thumbnail" alt="avatar" src="<%= user.avatar_url %>">
+                <img id="avatar-image" class="thumbnail avatar-thumbnail" alt="avatar" src="<%= user.avatar %>">
 <% } %>
               </div><!-- /.avatar-container -->
               <input type="hidden" name="avatar_url" value="<%= user.avatar_url %>">
