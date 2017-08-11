@@ -2,65 +2,7 @@
  * file: public/styles/user_profile.css
  */
 
-/****  DEBUG SECTION *************************************/
-
-.red-debug {
-  border: 1px solid red !important;
-}
-
-.orange-debug {
-  border: 1px solid orange !important;
-}
-
-.yellow-debug {
-  border: 1px solid yellow !important;
-}
-
-.green-debug {
-  border: 1px solid green !important;
-}
-
-.blue-debug {
-  border: 1px solid blue !important;
-}
-
-.purple-debug {
-  border: 1px solid purple !important;
-}
-
-.grey-debug {
-  border: 1px solid grey !important;
-}
-
-.black-debug {
-  border: 1px solid black !important;
-}
-
-/*
-* { border: 1px solid black !important; }*/
-
-/*
-span { border: 1px solid red !important; }*/
-
-/*
-.row { border: 1px solid orange !important; }*/
-
-/*
-.display-none { display: none !important; }*/
-
-/*
-.display-block { display: block !important; }*/
-
-/*
-.display-inline { display: inline !important; }*/
-
-/*
-.display-inline-block { display: inline-block !important; }*/
-
-/*
-div[class^="col-"], div[class*=" col-"] { border: 1px solid green !important; }*/
-
-/****  DEBUG SECTION ABOVE THIS LINE  ********************/
+/*************************************/
 
 *,
 *::before,
@@ -69,21 +11,21 @@ div[class^="col-"], div[class*=" col-"] { border: 1px solid green !important; }*
   padding: 0;
 }
 
-/********************/
+/*************************************/
 
 body {
   font-family: Cabin, sans-serif;
   padding-top: 50px;
 }
 
-/********************/
+/*************************************/
 
 .btn:focus,
 .btn:active {
   outline: none;
 }
 
-/********************/
+/*************************************/
 
 .profile-container {
   margin-top: 10px;
@@ -96,13 +38,13 @@ body {
   }
 }
 
-/********************/
+/*************************************/
 
 .avatar-container {
   width: 166px;
 }
 
-/********************/
+/*************************************/
 
 .avatar-thumbnail.editable:hover {
   opacity: 0.8;
@@ -115,7 +57,7 @@ body {
   height: 166px;
 }
 
-/********************/
+/*************************************/
 
 .modal-dialog {
   max-width: 400px;
@@ -146,7 +88,7 @@ body {
   width: 100%;
 }
 
-/********************/
+/*************************************/
 
 .flex-container {
   display: flex;
@@ -164,6 +106,10 @@ body {
 
 .info-blue {
   color: #1f2faf;
+}
+
+#app-brand.brand-yellow {
+  color: #efdf4f;
 }
 
 .flex-label {
@@ -191,7 +137,7 @@ body {
   white-space: nowrap
 }
 
-/********************/
+/*************************************/
 
 .inline {
   display: inline;
@@ -211,7 +157,7 @@ body {
   font-size: 0.9em;
 }
 
-/********************/
+/*************************************/
 
 .undo-button {
   visibility: hidden;
@@ -243,14 +189,6 @@ body {
 
 .navbar-collapse.in {
   overflow-y: visible;
-}
-
-.navbar-text {
-  margin: 13px 4px;
-}
-
-.navbar-brand {
-  min-width: 140px;
 }
 
 .nested-list-header {
