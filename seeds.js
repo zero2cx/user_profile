@@ -12,7 +12,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-var userData = [{ // user1
+var seedDataset = [{ // user1
   username: 'buttercup',
   password: 'fancyfeast',
   first_name: 'buttercup',
@@ -63,28 +63,27 @@ var userData = [{ // user1
 }];
 
 /**
- * use the object elements of the userData array to
+ * use the object elements of the seedDataset array to
  * seed some users into the database users collection
  */
 function seedDatabase() {
-  // remove existing users from the database
-  User.remove({}, function(err) {
-    if (err) {
-      console.log(' ** error: [%s] %s', filename, err);
-      process.exit(1);
-    }
-    console.log(' ++ info: [%s] remove all users', filename);
-
-    // loop through each user-object in the userData array
-    userData.forEach(function(userSeed) {
-      // create one user
-      User.register(userSeed, userSeed.password, function(err, user) {
+  // loop through each user-object in the seedDataset array
+  seedDataset.forEach(function(seed) {
+    // remove the user from the database
+    User.remove({ username: seed.username }, function(err) {
+      if (err) {
+        console.log(' ** error: [%s] %s', filename, err);
+        process.exit(1);
+      }
+      console.log(' ++ info: [%s] remove user "%s"', filename, seed.username);
+      // create the user in the database
+      User.register(seed, seed.password, function(err, user) {
         if (err) {
           console.log(' ** error: [%s] %s', filename, err);
           process.exit(1);
         }
         passport.authenticate('local');
-        console.log(' ++ info: [%s] create user "%s"', filename, userSeed.username);
+        console.log(' ++ info: [%s] create user "%s"', filename, seed.username);
       });
     });
   });
