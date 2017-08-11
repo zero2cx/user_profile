@@ -24,16 +24,15 @@
 <% } else { %>
               <img id="cropper-image" src="<%= user.avatar %>">
 <% } %>
+              <div id="feedback-label">error: image could not be loaded</div>
             </div><!-- /#avatar-cropper -->
-
-            <div id="feedback-label">error: image could not be imported</div>
 
             <div class="flex-container">
 
               <div class="flex-item">
                 <div class="input-group">
                   <span class="input-group-btn">
-                   <button id="load-button" class="btn btn-default btn-primary flex-button">load url</button>
+                   <button id="load-url-button" class="btn btn-default btn-primary flex-button">load url</button>
                   </span><!-- /.input-group-btn -->
                   <input id="load-url-input" class="form-control" type="text" placeholder="&#xf05a; paste an internet image url, or">
                 </div><!-- /.input-group -->
@@ -43,8 +42,8 @@
                 <form action="/user/<%= user._id %>/upload/" method="post" enctype="multipart/form-data">
                   <label id="upload-button" class="btn btn-default btn-primary flex-button"><input id="upload-file-input" name="upload_file" type="file" accept="image/*" class="hidden">upload</label>
                   <span class="flex-label">
-                    <i id="upload-button" class="fa fa-info-circle info-blue"></i>
-                    <span id="upload-bottom-label">upload an image file</span>
+                    <i id="upload-icon" class="fa fa-info-circle info-blue"></i>
+                    <span id="upload-label">upload an image file</span>
                   </span><!-- /.flex-label -->
                 </form><!-- /form-->
               </div><!-- /.flex-item -->

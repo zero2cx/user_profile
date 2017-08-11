@@ -125,11 +125,21 @@ body {
   padding: 8px;
 }
 
+#load-test-image {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
 #close-modal-button {
   position: absolute;
   top: 8px;
   right: 12px;
   cursor: pointer;
+}
+
+#avatar-cropper {
+  position: relative;
 }
 
 #cropper-image {
@@ -160,44 +170,19 @@ body {
   margin-left: 2px;
 }
 
-/********************/
-
 #load-url-input {
   padding: 2px 4px;
   height: 26px;
   font-family: 'FontAwesome';
 }
 
-/********************/
-
-#load-test-image {
-  display: none;
-  width: 0;
-  height: 0;
-}
-
-
-#avatar-cropper {
-  /*margin-bottom: 12px;*/
-  /*position: relative;*/
-  /*max-height: 300px;*/
-  /*margin: 0 auto;*/
-}
-
-/*
-#cropper-image {
-  width: 100%;
-}*/
-
-/********************/
-
 #feedback-label {
   position: absolute;
   display: none;
-  width: 250px;
+  width: 240px;
   left: 50%;
   bottom: 0px;
-  margin-left: -125px;
+  margin-left: -120px;
   color: #efef3f;
   font-weight: bold;
   font-size: 1.2em;

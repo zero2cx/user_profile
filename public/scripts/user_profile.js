@@ -29,8 +29,8 @@ var imageCropper = $('#cropper-image');
 var labelFeedback = $('#feedback-label');
 var buttonUploadFile = $('#upload-file-button');
 var inputUploadFile = $('#upload-file-input');
-var buttonEditImage = $('#edit-image-button');
-var inputUrl = $('#url-input');
+var buttonLoadUrl = $('#load-url-button');
+var inputLoadUrl = $('#load-url-input');
 /*********************************************************/
 /* declare global-variables */
 var changed = {
@@ -58,6 +58,7 @@ modalAvatarChooser.on('shown.bs.modal', function(e) {
   imageCropper.cropper({
     aspectRatio: 1,
     background: false,
+    /*
     crop: function(e) {
       console.log(e.x);
       console.log(e.y);
@@ -66,7 +67,7 @@ modalAvatarChooser.on('shown.bs.modal', function(e) {
       console.log(e.rotate);
       console.log(e.scaleX);
       console.log(e.scaleY);
-    }
+    }*/
   });
 });
 
@@ -81,7 +82,6 @@ buttonDone.on('click', function() {
   changed['avatar'] = true;
   buttonSave.attr('disabled', false)
   modalAvatarChooser.modal('hide');
-  // [TODO] SHOW THE UNDO BUTTON FOR THE AVATAR
 });
 
 /**
@@ -94,72 +94,62 @@ inputUploadFile.on('change', function() {
   //   return;
   // }
   // upload the image file
+  labelFeedback.hide();
   $(this).prop('form').submit();
-
-  // inputUrl.val(hiddenUploadFile.val().split('\\').pop());
-  // uploadedFile = true;
-  // buttonUploadFile.hide();
-  // buttonEditImage.show();
 });
 
 /**
  * when the image-url changes in the text-input, try to load
  * that image-url into the non-visible test-image
  */
-inputUrl.on('input', function() {
-  if (inputUrl.val() === '') {
-    labelFeedback.css('visibility', 'hidden');
-    inputUrl.css('background-color', '#ffffff');
-    buttonEditImage.hide();
-    buttonUploadFile.show();
-  }
-  else {
-    buttonUploadFile.hide();
-    buttonEditImage.show();
-  }
-});
-
-
-// buttonEditImage.on('click', function() {
-//   // if (uploadedFile) {
-//   //   imageTest.attr('src', hiddenUploadFile.val());
-//   // }
-//   // else {
-//   imageTest.attr('src', inputUrl.val());
-//   // }
+// inputUrl.on('input', function() {
+//   if (inputUrl.val() === '') {
+//     labelFeedback.css('visibility', 'hidden');
+//     inputUrl.css('background-color', '#ffffff');
+//   }
 // });
 
 /**
- * when an image-url successfully loads into the test-image,
- * load that image-url into the cropper-image
+ * when the load-url button is clicked, then load the image-url
+ * input's 'value' attribute into the load-test image
+ */
+buttonLoadUrl.on('click', function() {
+  imageLoadTest.attr('src', inputLoadUrl.val());
+});
+
+/**
+ * when an image successfully loads into the load-test image, then
+ * test it against the known params for the 'image_unavailable.jpg'
+ * image from flickr, and then either show an error via the
+ * feedback-label, or load the image-url into the cropper-image
  */
 imageLoadTest.on('load', function() {
   if (imageLoadTest.prop('width') === 500 && imageLoadTest.prop('height') === 374) {
-    console.log('error: cannot load image ' + imageLoadTest.prop('src'));
-    labelFeedback.css('visibility', 'visible');
-    inputUrl.css('background-color', '#ffbfbf');
+    labelFeedback.show();
+    // inputUrl.css('background-color', '#ffbfbf');
   }
   else {
-    labelFeedback.show(); //css('visibility', 'hidden');
-    inputUrl.css('background-color', '#ffffff');
+    labelFeedback.hide();
+    // inputUrl.css('background-color', '#ffffff');
     imageCropper.cropper('replace', $(this).attr('src'));
   }
 });
 
 /**
- * when the image-url fails to load into the test-image, show the error
- * feedback-label, and change the text-input's background color to red
+ * when the image-url fails to load into the load-test image,
+ * then show the error via the feedback-label, and change the
+ * text-input's background color to red
  */
-// imageLoadTest.on('error', function() {
-//   labelFeedback.css('visibility', 'visible');
-//   inputUrl.css('background-color', '#ffbfbf');
-// });
+imageLoadTest.on('error', function() {
+  labelFeedback.show();
+  // inputUrl.css('background-color', '#ffbfbf');
+});
 
 /*********************************************************/
 
 /**
- * when any text-input value has changed or the avatar-url on the
- * profile-form, make visible the text-input's associated undo-button
+ * when any text-input 'value' or avatar-url 'src' attribute
+ * has changed, make visible the associated undo-button
  */
 $('.form-control').on('input', function() {
   $(this).prev().children().css('visibility', 'visible');
@@ -168,10 +158,11 @@ $('.form-control').on('input', function() {
 });
 
 /**
- * when any undo-button is clicked, reset the value of its associated
- * avatar-image or text-input, and then hide the undo-button, and then
- * disable the save-changes button if this was the last remaining change
- * to the form data
+ * when any undo-button is clicked, reset the associated
+ * avatar-image 'src' or text-input 'value' attribute, and
+ * then hide the undo-button, and then disable the save-changes
+ * button if this was the last remaining changed data with
+ * respect to the original form data
  */
 $('.undo-button').on('click', function() {
   if ($(this).attr('data-target') === 'avatar-image') {
@@ -189,7 +180,8 @@ $('.undo-button').on('click', function() {
 });
 
 /**
- *
+ * when the save-changes button is clicked, update the hidden
+ * avatar-input, and then submit the profile-form
  */
 function saveProfile() {
   inputAvatar.val(imageAvatar.attr('src'));
