@@ -1,35 +1,25 @@
 <% /* file: views/user/new.ejs                        */ %>
-
-<% include ../partials/view-header %>
-
-    <div class="container user-form">
+<%
+include ../partials/view-header %>
+    <div class="container form-container">
       <div class="row text-center">
-
         <h1>new user form</h1>
-
-        <form id="new-user-form" name="new_user_form" action="/user/new" method="POST">
-
+        <form id="new-user-form" name="new_user_form" action="/user/new" method="post">
           <div class="form-group">
             <input class="form-control" type="text" name="username" placeholder="choose username">
-          </div>
-
+          </div><!-- /.form-group -->
           <div class="form-group">
             <input id="password-input" class="form-control" type="password" name="password" placeholder="choose password">
-          </div>
-
+          </div><!-- /.form-group -->
           <div class="form-group">
             <input id="confirm-password-input" class="form-control" type="password" name="confirm_password" placeholder="confirm password">
-          </div>
-
+          </div><!-- /.form-group -->
           <div class="form-group">
             <button class="btn btn-lg btn-primary btn-block" onclick="javascript:submitNewUserForm()">submit</button>
-          </div>
-
-        </form>
-
+          </div><!-- /.form-group -->
+        </form><!-- /#new-user-form -->
         <a href="/">cancel</a>
-
-      </div>
-    </div>
-
-<% include ../partials/view-footer %>
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+<%
+include ../partials/view-footer %>
