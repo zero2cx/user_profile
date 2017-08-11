@@ -9,99 +9,19 @@
 *::after {
   margin: 0;
   padding: 0;
+  /*font-family: inherit;*/
 }
 
 /*************************************/
 
 body {
-  font-family: Cabin, sans-serif;
+  font-family: Cabin, sans-serif, 'FontAwesome';
   padding-top: 50px;
 }
-
-/*************************************/
 
 .btn:focus,
 .btn:active {
   outline: none;
-}
-
-/*************************************/
-
-.profile-container {
-  margin-top: 10px;
-  max-width: 600px;
-}
-
-@media (max-width: 767px) {
-  .profile-container {
-    width: 300px;
-  }
-}
-
-/*************************************/
-
-.avatar-container {
-  width: 166px;
-}
-
-/*************************************/
-
-.avatar-thumbnail.editable:hover {
-  opacity: 0.8;
-  cursor: pointer;
-}
-
-.avatar-thumbnail {
-  margin: 0 auto;
-  width: 166px;
-  height: 166px;
-}
-
-/*************************************/
-
-.modal-dialog {
-  max-width: 400px;
-}
-
-.modal-body {
-  padding: 8px;
-}
-
-#load-test-image {
-  display: none;
-  width: 0;
-  height: 0;
-}
-
-#close-modal-button {
-  position: absolute;
-  top: 8px;
-  right: 12px;
-  cursor: pointer;
-}
-
-#avatar-cropper {
-  position: relative;
-}
-
-#cropper-image {
-  width: 100%;
-}
-
-/*************************************/
-
-.flex-container {
-  display: flex;
-  flex-direction: column;
-}
-
-.flex-item {
-  margin-top: 8px;
-}
-
-.flex-button {
-  padding: 2px 6px;
-  width: 60px;
 }
 
 .info-blue {
@@ -111,33 +31,6 @@ body {
 #app-brand.brand-yellow {
   color: #efdf4f;
 }
-
-.flex-label {
-  margin-left: 2px;
-}
-
-#load-url-input {
-  padding: 2px 4px;
-  height: 26px;
-  font-family: 'FontAwesome';
-}
-
-#feedback-label {
-  position: absolute;
-  display: none;
-  width: 240px;
-  left: 50%;
-  bottom: 0px;
-  margin-left: -120px;
-  color: #efef3f;
-  font-weight: bold;
-  font-size: 1.2em;
-  text-shadow: -1px 0 #3f3f3f, 0 1px #3f3f3f, 1px 0 #3f3f3f, 0 -1px #3f3f3f;
-  z-index: 99;
-  white-space: nowrap
-}
-
-/*************************************/
 
 .inline {
   display: inline;
@@ -159,7 +52,18 @@ body {
 
 /*************************************/
 
-.undo-button {
+.profile-container {
+  margin-top: 10px;
+  max-width: 600px;
+}
+
+@media (max-width: 767px) {
+  .profile-container {
+    width: 300px;
+  }
+}
+
+.profile-container .undo-button {
   visibility: hidden;
   margin-top: 8px;
   margin-bottom: 4px;
@@ -167,22 +71,110 @@ body {
   opacity: 0.6;
 }
 
-.form-control {
+.profile-container .form-control {
   font-size: 1em;
   resize: none;
 }
 
-.profile-button {
+.profile-container .profile-button {
   margin: 6px 6px;
   width: 124px;
 }
 
-.profile-content {
+.profile-container .profile-content {
   margin-top: 10px;
 }
 
-.profile-banner {
+.profile-container .profile-banner {
   text-align: center;
+}
+
+/*************************************/
+
+.avatar-container {
+  width: 166px;
+}
+
+.avatar-container .avatar-thumbnail.editable:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.avatar-container .avatar-thumbnail {
+  margin: 0 auto;
+  width: 166px;
+  height: 166px;
+}
+
+/*************************************/
+
+.modal-dialog {
+  max-width: 400px;
+}
+
+.modal-dialog .modal-body {
+  padding: 8px;
+}
+
+.modal-dialog #load-test-image {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.modal-dialog #close-modal-button {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  cursor: pointer;
+}
+
+.modal-dialog #avatar-cropper {
+  position: relative;
+}
+
+.modal-dialog #cropper-image {
+  width: 100%;
+}
+
+.modal-dialog #feedback-label {
+  position: absolute;
+  display: none;
+  width: 240px;
+  left: 50%;
+  bottom: 0px;
+  margin-left: -120px;
+  color: #efef3f;
+  font-weight: bold;
+  font-size: 1.2em;
+  text-shadow: -1px 0 #3f3f3f, 0 1px #3f3f3f, 1px 0 #3f3f3f, 0 -1px #3f3f3f;
+  z-index: 99;
+  white-space: nowrap
+}
+
+/*************************************/
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-container .flex-item {
+  margin-top: 8px;
+}
+
+.flex-container .flex-button {
+  padding: 2px 6px;
+  width: 60px;
+}
+
+.flex-container .flex-label {
+  margin-left: 2px;
+}
+
+.flex-container #load-url-input {
+  padding: 2px 5px;
+  height: 26px;
 }
 
 /*************************************/
