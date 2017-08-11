@@ -3,7 +3,7 @@
  */
 
 /**
- * import modules and declare global variables
+ * import module files and declare global variables
  */
 var filename = __filename.split("/").pop();
 var express = require('express');
@@ -21,7 +21,7 @@ var app = express();
 var databaseUrl = process.env.DATABASE_URL || "mongodb://localhost/user_profile";
 
 /**
- * initialize database connection and re-seed with test data
+ * initialize the database connection and re-seed with test data
  */
 mongoose.Promise = global.Promise;
 mongoose.connect(databaseUrl);
@@ -49,13 +49,9 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// var storage = multer.memoryStorage()
-// var upload = multer({ dest: './uploads/' });
-
 var upload = multer({
   storage: multer.diskStorage({
     destination: function(req, file, callback) {
-      // callback(null, __dirname + '/public/uploads/');
       callback(null, 'public/uploads/');
     },
     filename: function(req, file, callback) {
@@ -96,16 +92,18 @@ app.use(function(req, res, next) {
 
 /**
  * ROUTE: GET /
- *   display landing page
+ * display landing page
  */
 app.get('/', function(req, res) {
-  res.render('landing');
+  res.render('landing', {
+    user: req.user
+  });
 });
 
 /**
  * ROUTE: POST /upload/image
- *   display the profile-page with an open avatar-chooser
- *   featuring the uploaded file
+ * display the profile-page with an open avatar-chooser
+ * featuring the uploaded file
  */
 app.post('/user/:id/upload', upload.single('upload_file'), function(req, res) {
   var imageFile = req.file.path.replace(/public/, '');
@@ -129,7 +127,7 @@ app.post('/user/:id/upload', upload.single('upload_file'), function(req, res) {
 app.use('/user', userRoutes);
 
 /**
- *  start the app server
+ * start the app server
  */
 app.listen(process.env.PORT, process.env.IP, function() {
   console.info(' ++ info: [%s] listening on port %d', filename, process.env.PORT);
