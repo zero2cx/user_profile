@@ -28,6 +28,10 @@ body {
   color: #1f2faf;
 }
 
+#app-brand.brand-yellow:hover {
+  color: yellow;
+}
+
 #app-brand.brand-yellow {
   color: #efdf4f;
 }
@@ -85,8 +89,29 @@ body {
   margin-top: 10px;
 }
 
-.profile-container .profile-banner {
+.profile-container #admin-badge {
+  display: inline-block;
+  padding: 2px 6px;
+  margin-right: 6px;
+  color: green;
+  font-size: 1.2em;
+  opacity: 0.8;
+}
+
+.profile-container #username-label {
+  display: inline-block;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+
+/*
+.profile-container #username-banner {
   text-align: center;
+}*/
+
+.profile-container .profile-badge {
+  margin-bottom: 12px;
 }
 
 /*************************************/
