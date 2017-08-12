@@ -2,7 +2,7 @@
 
 include ../partials/view-header %><%
 
-/* for only the site-user viewing their own profile while not suspended, include the avatar-chooser structure */
+// for only the site-user viewing their own profile while not suspended, include the avatar-chooser structure
 if (currentUser && user.username === currentUser.username && !user.is_suspended) { %><%
 
 include ../partials/avatar-chooser %><%
@@ -10,12 +10,12 @@ include ../partials/avatar-chooser %><%
         <div class="container profile-container">
           <form id="profile-form" name="profile_form" action="/user/<%= user._id %>" method="POST">
             <div id="username-banner" class="text-center"><%
-/* for only a site admin, prefix the admin-badge to the username-label */
+// for only a site admin, prefix the admin-badge to the username-label
 if (user.is_admin) { %>
               <i id="admin-badge" class="glyphicon glyphicon-king thumbnail" title="site administrator"></i><%
 } %>
               <span id="username-label"><%= user.username %></span><%
-/* for only a suspended user, display a notice-banner below the username-banner */
+// for only a suspended user, display a notice-banner below the username-banner
 if (user.is_suspended) { %>
               <h3 class="suspended">USER SUSPENDED</h3>
               <a class="suspended" href="javascript:showViolationNotice()">notice of violation</a><%
