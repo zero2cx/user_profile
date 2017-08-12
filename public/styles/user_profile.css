@@ -67,6 +67,10 @@ body {
 
 /*************************************/
 
+.form-container {
+  width: 300px;
+}
+
 .profile-container {
   margin-top: 10px;
   max-width: 600px;

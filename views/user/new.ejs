@@ -14,11 +14,19 @@ include ../partials/view-header %>
           <div class="form-group">
             <input id="confirm-password-input" class="form-control" type="password" name="confirm_password" placeholder="confirm password">
           </div><!-- /.form-group -->
-          <div class="form-group">
-            <button class="btn btn-lg btn-primary btn-block" onclick="javascript:submitNewUserForm()">submit</button>
-          </div><!-- /.form-group -->
+          <div class="row">
+            <div class="col-xs-6">
+              <div class="form-group">
+                <a class="btn btn-primary" href="/user/new/cancel">cancel</a>
+              </div><!-- /.form-group -->
+            </div><!-- /.col -->
+            <div class="col-xs-6">
+              <div class="form-group">
+                <button class="btn btn-primary" onclick="javascript:submitNewUserForm()">submit</button>
+              </div><!-- /.form-group -->
+            </div><!-- /.col -->
+          </div><!-- /.row -->
         </form><!-- /#new-user-form -->
-        <a href="/">cancel</a>
       </div><!-- /.row -->
     </div><!-- /.container -->
 <%

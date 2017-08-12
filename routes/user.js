@@ -46,6 +46,14 @@ router.post('/new', function(req, res) {
 });
 
 /**
+ * ROUTE: GET /new/cancel
+ *  redirect back from new user form
+ */
+router.get('/new/cancel', function(req, res) {
+  res.redirect('/');
+});
+
+/**
  * ROUTE: POST /login
  *  login the current user
  */
