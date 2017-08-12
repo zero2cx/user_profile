@@ -110,8 +110,14 @@ body {
   font-weight: bold;
 }
 
-.profile-container .profile-badge {
-  margin-bottom: 12px;
+.profile-container #report-button:hover {
+  opacity: 1;
+}
+
+.profile-container #report-button {
+  margin-top: 8px;
+  padding: 2px;
+  opacity: 0.6;
 }
 
 /*************************************/

@@ -14,11 +14,27 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
 
 // for only a site admin, prefix the admin-badge to the username-label
 if (user.is_admin) { %>
-              <i id="admin-badge" class="glyphicon glyphicon-king thumbnail" title="site administrator"></i><%
+              <i id="admin-badge" class="glyphicon glyphicon-king" title="site administrator"></i><%
 }
 %>
-              <span id="username-label"><%= user.username %></span><%
+              <span id="username-label"><%= user.username %></span>
 
+
+<div class="dropdown pull-right">
+  <button id="report-button" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <i class="glyphicon glyphicon-flag" title="report this user"></i>
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <li class="dropdown-header">Report this user</li>
+    <li><a href="#">Inappropriate behavior</a></li>
+    <li><a href="#">NSFW content</a></li>
+    <li><a href="#">Other reason</a></li>
+  </ul>
+</div>
+
+
+<%
 // for only a suspended user, display a notice-banner below the username-banner
 if (user.is_suspended) { %>
               <h3 class="suspended">USER SUSPENDED</h3>
