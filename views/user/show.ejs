@@ -5,21 +5,26 @@ include ../partials/view-header %><%
 // for only the site-user viewing their own profile while not suspended, include the avatar-chooser structure
 if (currentUser && user.username === currentUser.username && !user.is_suspended) { %><%
 
-include ../partials/avatar-chooser %><%
-} %>
+  include ../partials/avatar-chooser %><%
+}
+%>
         <div class="container profile-container">
           <form id="profile-form" name="profile_form" action="/user/<%= user._id %>" method="POST">
             <div id="username-banner" class="text-center"><%
+
 // for only a site admin, prefix the admin-badge to the username-label
 if (user.is_admin) { %>
               <i id="admin-badge" class="glyphicon glyphicon-king thumbnail" title="site administrator"></i><%
-} %>
+}
+%>
               <span id="username-label"><%= user.username %></span><%
+
 // for only a suspended user, display a notice-banner below the username-banner
 if (user.is_suspended) { %>
               <h3 class="suspended">USER SUSPENDED</h3>
               <a class="suspended" href="javascript:showViolationNotice()">notice of violation</a><%
-} %>
+}
+%>
             </div><!-- /.username-banner -->
             <div class="profile-content">
               <div class="row">
@@ -27,30 +32,35 @@ if (user.is_suspended) { %>
                   <div class="avatar-container center-block">
                     <input id="avatar-undo-input" type="hidden" value="<%= user.avatar %>">
                     <i class="undo-button fa fa-undo" title="undo edit" data-target="avatar-image" data-undo="avatar-undo-input" data-changed="avatar"></i><%
+
 // for only the site-user viewing their own profile while not suspended, make the avatar-image click-responsive
 if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                     <img id="avatar-image" class="thumbnail avatar-thumbnail editable" onclick="modalAvatarChooser.modal()" alt="avatar image" src="<%= user.avatar %>"><%
 } else { %>
                     <img id="avatar-image" class="thumbnail avatar-thumbnail" alt="avatar image" src="<%= user.avatar %>"><%
-} %>
+}
+%>
                   </div><!-- /.avatar-container -->
                   <input id="avatar-input" name="user[avatar]" type="hidden" value="<%= user.avatar %>">
                   <h6 class="text-center dimmed">
                     <em>join date: <span id="join-date-banner"><%= user.join_date %></span></em>
                   </h6><!-- /.text-center -->
                   <div class="text-center"><%
+
 // for only the site-admin not viewing their own profile, display the appropriate admin-button
 if (currentUser && currentUser.is_admin && user.username !== currentUser.username) {
   if (user.is_suspended) { %>
-                    <button id="reinstate-button" class="profile-button btn btn-success btn-sm btn-normalize" href="javascript:adminForm.submit()">reinstate user</button><%
+                    <button id="reinstate-button" class="profile-button btn btn-success" href="javascript:adminForm.submit()">reinstate user</button><%
   } else { %>
-                    <button id="suspend-button" class="profile-button btn btn-danger btn-sm btn-normalize" href="javascript:suspendUser()">suspend user</button><%
+                    <button id="suspend-button" class="profile-button btn btn-danger" href="javascript:suspendUser()">suspend user</button><%
   }
-} %><%
+}
+%><%
 // for only the site-user viewing their own profile while not suspended, display the save-changes button
 if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
-                    <button id="save-button" class="profile-button btn btn-primary btn-sm btn-normalize" onclick="saveProfile()" disabled="disabled">save changes</button><%
-} %>
+                    <button id="save-button" class="profile-button btn btn-primary" onclick="saveProfile()" disabled="disabled">save changes</button><%
+}
+%>
                   </div><!-- /.text-center [profile-buttons] -->
                 </div><!-- /.col [left] -->
                 <div class="col-xs-12 col-sm-8 no-gutter">
@@ -60,12 +70,14 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
                     <span class="pull-right">
                       <i class="undo-button fa fa-undo" title="undo edit" data-target="first-name-input" data-undo="first-name-undo" data-changed="firstName"></i>
                     </span><!-- /.pull-right --><%
+
 // for only the site-user viewing their own profile while not suspended, make this form field editable
 if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                     <input id="first-name-input" class="form-control" type="text" name="user[first_name]" placeholder="first name" value="<%= user.first_name %>" data-changed="firstName"><%
 } else { %>
                     <input id="first-name-input" class="form-control" type="text" name="user[first_name]" placeholder="first name" value="<%= user.first_name %>" readonly><%
-} %>
+}
+%>
                   </div><!-- /.form-group [first-name] -->
                   <div class="form-group">
                     <input id="last-name-undo" type="hidden" value="<%= user.last_name %>">
@@ -73,12 +85,14 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
                     <span class="pull-right">
                       <i class="undo-button fa fa-undo" title="undo edit" data-target="last-name-input" data-undo="last-name-undo" data-changed="lastName"></i>
                     </span><!-- /.pull-right --><%
+
 // for only the site-user viewing their own profile while not suspended, make this form field editable
 if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                     <input id="last-name-input" class="form-control" type="text" name="user[last_name]" placeholder="last name" value="<%= user.last_name %>" data-changed="lastName"><%
 } else { %>
                     <input id="last-name-input" class="form-control" type="text" name="user[last_name]" placeholder="last name" value="<%= user.last_name %>" readonly><%
-} %>
+}
+%>
                   </div><!-- /.form-group [last-name] -->
                   <div class="form-group">
                     <input id="email-address-undo" type="hidden" value="<%= user.email_address %>">
@@ -86,12 +100,14 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
                     <span class="pull-right">
                       <i class="undo-button fa fa-undo" title="undo edit" data-target="email-address-input" data-undo="email-address-undo" data-changed="emailAddress"></i>
                     </span><!-- /.pull-right --><%
+
 // for only the site-user viewing their own profile while not suspended, make this form field editable
 if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                     <input id="email-address-input" class="form-control" type="text" name="user[email_address]" placeholder="email address" value="<%= user.email_address %>" data-changed="emailAddress"><%
 } else { %>
                     <input id="email-address-input" class="form-control" type="text" name="user[email_address]" placeholder="email address" value="<%= user.email_address %>" readonly><%
-} %>
+}
+%>
                   </div><!-- /.form-group [email-address] -->
                   <div class="form-group">
                     <input id="biography-undo" type="hidden" value="<%= user.biography %>">
@@ -99,12 +115,14 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
                     <span class="pull-right">
                       <i class="undo-button fa fa-undo" title="undo edit" data-target="biography-input" data-undo="biography-undo" data-changed="biography"></i>
                     </span><!-- /.pull-right --><%
+
 // for only the site-user viewing their own profile while not suspended, make this form field editable
 if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                     <textarea id="biography-input" class="form-control" rows="4" name="user[biography]" placeholder="biography" data-changed="biography"><%= user.biography %></textarea><%
 } else { %>
                     <textarea id="biography-input" class="form-control" rows="4" name="user[biography]" placeholder="biography" readonly><%= user.biography %></textarea><%
-} %>
+}
+%>
                   </div><!-- /.form-group [biography] -->
                 </div><!-- /.col [right] -->
               </div><!-- /.row -->
@@ -112,4 +130,5 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
           </form><!-- /form [profile_form] -->
         </div><!-- /.container --><%
 
-include ../partials/view-footer %>
+include ../partials/view-footer
+%>
