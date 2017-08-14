@@ -121,6 +121,10 @@ app.post('/user/:id/upload', upload.single('upload_file'), function(req, res) {
   });
 });
 
+app.get('/terms', function(req, res) {
+  res.sendFile(__dirname + '/public/terms.html');
+});
+
 /**
  * import the user routes
  */
