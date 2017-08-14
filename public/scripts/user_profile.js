@@ -68,6 +68,9 @@ modalAvatarChooser.on('shown.bs.modal', function(e) {
       console.log(e.scaleX);
       console.log(e.scaleY);
     }*/
+    // ready: function(e) {
+    //   console.log('cropper 1 ready');
+    // }
   });
 });
 
@@ -187,3 +190,21 @@ function saveProfile() {
   inputAvatar.val(imageAvatar.attr('src'));
   formProfile.submit();
 }
+
+/**
+ * disable the default behavior for a dragover event
+ */
+document.addEventListener('dragover', function(e) {
+  e.preventDefault();
+}, false);
+
+/**
+ * enable the drop event for the cropper area only, then load
+ * the dropped image-url into the load-test-image
+ */
+document.addEventListener('drop', function(e) {
+  e.preventDefault();
+  if (e.target.className.match(/^cropper/)) {
+    imageLoadTest.attr('src', e.dataTransfer.getData('text'));
+  }
+});
