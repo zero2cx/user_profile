@@ -16,17 +16,17 @@
         <nav class="navbar navbar-inverse navbar-fixed-top">
           <div class="container-fluid">
             <div class="navbar-header">
-              <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#collapsible-navbar" aria-expanded="false">
+              <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#collapsible-navbar">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button><!-- /.navbar-toggle -->
-              <a id="app-brand" class="navbar-brand brand-yellow" href="/">UserProfile</a>
-            </div><!-- /.navbar-header -->
-            <div class="collapse navbar-collapse" id="collapsible-navbar"><%
+              <a id="app-brand" class="navbar-brand brand-yellow" href="/">UserProfile</a><%
 
 include ./user-list%>
+            </div><!-- /.navbar-header -->
+            <div class="collapse navbar-collapse" id="collapsible-navbar">
               <ul class="nav navbar-nav navbar-right"><%
 if (!currentUser) { %>
                 <li>
