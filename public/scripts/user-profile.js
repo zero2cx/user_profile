@@ -208,3 +208,13 @@ document.addEventListener('drop', function(e) {
     imageLoadTest.attr('src', e.dataTransfer.getData('text'));
   }
 });
+
+/*********************************************************/
+
+/**
+ * disable normal click behavior on dropdown-menus and dropdown-submenus
+ */
+$('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(e) {
+  e.stopPropagation();
+  e.preventDefault();
+});
