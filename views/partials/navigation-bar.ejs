@@ -1,6 +1,6 @@
 <% /* file: views/partials/navigation-bar.ejs            */ %>
 <!-- begin: navigation-bar -->
-        <nav class="navbar navbar-inverse navbar-fixed-top">
+        <nav class="navbar navbar-fixed-top navbar-inverse">
           <div class="container-fluid">
             <div class="navbar-header">
               <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#collapsible-navbar">
@@ -8,34 +8,35 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-              </button><!-- /.navbar-toggle -->
-              <a id="app-brand" class="navbar-brand brand-yellow" href="/">UserProfile</a><%
-
-include ./user-list %>
+              </button><!-- /.navbar-toggle /.collapsed -->
+              <a id="app-brand" class="navbar-brand brand-yellow" href="/">UserProfile</a>
             </div><!-- /.navbar-header -->
-            <div class="collapse navbar-collapse" id="collapsible-navbar">
+            <div class="collapse navbar-collapse" id="collapsible-navbar"><%
+include ./user-list %>
               <ul class="nav navbar-nav navbar-right"><%
+// if the user is not logged in, then show the log-in form
 if (!currentUser) { %>
                 <li>
                   <form class="navbar-form" action="/user/login" method="post">
                     <span class="form-group">
-                      <input type="text" class="form-control horizontal-form" name="username" placeholder="username">
+                      <input type="text" class="form-control" name="username" placeholder="username">
                     </span><!-- /.form-group -->
                     <span class="form-group">
-                      <input type="password" class="form-control horizontal-form" name="password" placeholder="password">
+                      <input type="password" class="form-control" name="password" placeholder="password">
                     </span><!-- /.form-group -->
                     <span class="form-group">
-                      <button type="submit" class="btn btn-default btn-primary horizontal-form">Log In</button>
+                      <button type="submit" class="btn btn-default btn-primary">Log In</button>
                     </span><!-- /.form-group -->
                   </form><!-- /.navbar-form -->
-                </li><!-- -->
+                </li><!-- /li -->
                 <li><a href="/user/new">Sign Up</a></li><%
+// else, show the signed-in-as link along with the log-out link
 } else { %>
                 <li><a href="/user/<%= currentUser._id %>">Signed in as <%= currentUser.username %></a></li>
                 <li><a href="/user/logout">Log Out</a></li><%
 } %>
-              </ul><!-- /.navbar-nav -->
-            </div><!-- /.collapse -->
+              </ul><!-- /.nav /.navbar-nav /.navbar-right -->
+            </div><!-- /.collapse /.navbar-collapse -->
           </div><!-- /.container-fluid -->
-        </nav><!-- /.navbar -->
+        </nav><!-- /.navbar /.navbar-inverse /.navbar-fixed-top-->
 <!-- end: navigation-bar -->
