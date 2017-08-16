@@ -214,7 +214,38 @@ document.addEventListener('drop', function(e) {
 /**
  * disable normal click behavior on dropdown-menus and dropdown-submenus
  */
+$('a.dropdown-submenu').on('click', function(e) {
+  e.stopPropagation();
+  e.preventDefault();
+  if ($(this).hasClass('dropdown-submenu-close')) {
+    // clicked item was closed, so close all other items, then open this item
+    $(this).parent().siblings().children('ul').toggle(false)
+    $(this).parent().siblings().children('a').removeClass('dropdown-submenu-open');
+    $(this).parent().siblings().children('a').addClass('dropdown-submenu-close');
+    $(this).removeClass('dropdown-submenu-close');
+    $(this).addClass('dropdown-submenu-open');
+    $(this).parent().children('ul').toggle(true)
+    // console.log($(this));
+  }
+  else {
+    // clicked item was open, so close this item
+    $(this).removeClass('dropdown-submenu-open');
+    $(this).addClass('dropdown-submenu-close');
+    $(this).parent().children('ul').toggle(false)
+    // console.log($(this));
+  }
+});
+
+
+
+/*
 $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(e) {
   e.stopPropagation();
   e.preventDefault();
-});
+  console.log('\nsiblings()');
+  console.log($(this).parent().siblings());
+  console.log('\nsiblings().children(ul)');
+  console.log($(this).parent().siblings().children('ul'));
+  $(this).parent().siblings().children('ul').toggle(false);
+  $(this).next('ul.dropdown-menu').toggle()
+});*/
