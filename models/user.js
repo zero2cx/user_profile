@@ -47,6 +47,12 @@ var UserSchema = new mongoose.Schema({
   is_suspended: {
     type: Boolean,
     default: false
+  },
+  user_prefs: {
+    night_mode: {
+      type: Boolean,
+      default: true
+    }
   }
 });
 /* add user-authentication functionality to the schema */

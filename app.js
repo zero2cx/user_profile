@@ -87,12 +87,16 @@ var upload = multer({
   }
 });
 
+var nightMode = true;
+// var nightMode = false;
+
 /**
  * set some variables scoped for all routes
  */
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
   res.locals.uploadFile = '';
+  res.locals.nightMode = nightMode;
   next();
 }, function(req, res, next) {
   User.find({}, function(err, users) {

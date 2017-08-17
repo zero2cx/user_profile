@@ -44,12 +44,45 @@ body {
   color: #1f2faf;
 }
 
+/*
+.no-hover:hover {
+  text-decoration: none;
+}*/
+
+/*
 #app-brand.brand-yellow:hover {
+  color: yellow;
+}*/
+
+/*
+#app-brand.brand-yellow {
+  color: #efdf4f;
+}*/
+
+.toggle-day-night {
+  color: #ffffff;
+  background-color: green;
+}
+
+#mode-switch:hover {
+  color: #9d9d9d;
+}
+
+#mode-switch>#lightbulb:hover {
+  /*text-decoration: none;*/
+  color: #9d9d9d;
+}
+
+#mode-switch>i:hover {
   color: yellow;
 }
 
-#app-brand.brand-yellow {
-  color: #efdf4f;
+.bigdot {
+  float: left;
+  margin-top: -8px;
+  margin-right: -14px;
+  color: yellow;
+  font-size: 2.6em;
 }
 
 .nav-avatar {
