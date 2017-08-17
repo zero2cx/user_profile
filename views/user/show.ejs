@@ -1,16 +1,32 @@
-<% /* file: views/user/show.ejs                       */ %><%
+<% // views/user/show.ejs
 
-include ../partials/view-header %><%
+/**
+ * UserProfile is a browser interface for web site user profiles.
+ * Copyright (C) 2017  David Schenck
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 
+%><%
+include ../partials/view-header
 // for only the site-user viewing their own profile while not suspended, include the avatar-chooser structure
-if (currentUser && user.username === currentUser.username && !user.is_suspended) { %><%
-
-  include ../partials/avatar-chooser %><%
+if (currentUser && user.username === currentUser.username && !user.is_suspended) {
+  include ../partials/avatar-chooser
 } %>
         <div class="container profile-container">
           <form id="profile-form" name="profile_form" action="/user/<%= user._id %>" method="POST">
             <div id="username-banner" class="text-center"><%
-
 // for only a site admin, prefix the admin-badge to the username-label
 if (user.is_admin) { %>
               <i id="admin-badge" class="glyphicon glyphicon-king" title="site administrator"></i><%
@@ -31,7 +47,6 @@ if (user.is_admin) { %>
                   <li><a href="/terms">Terms Of Service</a></li>
                 </ul>
               </div><%
-
 // for only a suspended user, display a notice-banner below the username-banner
 if (user.is_suspended) { %>
               <h3 class="suspended">USER SUSPENDED</h3>
@@ -44,7 +59,6 @@ if (user.is_suspended) { %>
                   <div class="avatar-container center-block">
                     <input id="avatar-undo-input" type="hidden" value="<%= user.avatar %>">
                     <i class="undo-button fa fa-undo" title="undo edit" data-target="avatar-image" data-undo="avatar-undo-input" data-changed="avatar"></i><%
-
 // for only the site-user viewing their own profile while not suspended, make the avatar-image click-responsive
 if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                     <img id="avatar-image" class="thumbnail avatar-thumbnail editable" onclick="modalAvatarChooser.modal()" alt="avatar image" src="<%= user.avatar %>"><%
@@ -57,7 +71,6 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
                     <em>join date: <span id="join-date-banner"><%= user.join_date %></span></em>
                   </h6><!-- /.text-center -->
                   <div class="text-center"><%
-
 // for only the site-admin not viewing their own profile, display the appropriate admin-button
 if (currentUser && currentUser.is_admin && user.username !== currentUser.username) {
   if (user.is_suspended) { %>
@@ -79,7 +92,6 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
                     <span class="pull-right">
                       <i class="undo-button fa fa-undo" title="undo edit" data-target="first-name-input" data-undo="first-name-undo" data-changed="firstName"></i>
                     </span><!-- /.pull-right --><%
-
 // for only the site-user viewing their own profile while not suspended, make this form field editable
 if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                     <input id="first-name-input" class="form-control" type="text" name="user[first_name]" placeholder="first name" value="<%= user.first_name %>" data-changed="firstName"><%
@@ -93,7 +105,6 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
                     <span class="pull-right">
                       <i class="undo-button fa fa-undo" title="undo edit" data-target="last-name-input" data-undo="last-name-undo" data-changed="lastName"></i>
                     </span><!-- /.pull-right --><%
-
 // for only the site-user viewing their own profile while not suspended, make this form field editable
 if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                     <input id="last-name-input" class="form-control" type="text" name="user[last_name]" placeholder="last name" value="<%= user.last_name %>" data-changed="lastName"><%
@@ -107,7 +118,6 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
                     <span class="pull-right">
                       <i class="undo-button fa fa-undo" title="undo edit" data-target="email-address-input" data-undo="email-address-undo" data-changed="emailAddress"></i>
                     </span><!-- /.pull-right --><%
-
 // for only the site-user viewing their own profile while not suspended, make this form field editable
 if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                     <input id="email-address-input" class="form-control" type="text" name="user[email_address]" placeholder="email address" value="<%= user.email_address %>" data-changed="emailAddress"><%
@@ -121,7 +131,6 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
                     <span class="pull-right">
                       <i class="undo-button fa fa-undo" title="undo edit" data-target="biography-input" data-undo="biography-undo" data-changed="biography"></i>
                     </span><!-- /.pull-right --><%
-
 // for only the site-user viewing their own profile while not suspended, make this form field editable
 if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                     <textarea id="biography-input" class="form-control" rows="4" name="user[biography]" placeholder="biography" data-changed="biography"><%= user.biography %></textarea><%
@@ -134,6 +143,5 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
             </div><!-- /.profile-content -->
           </form><!-- /form [profile_form] -->
         </div><!-- /.container --><%
-
 include ../partials/view-footer
 %>
