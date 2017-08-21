@@ -33,19 +33,20 @@ if (nightMode) { %>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button><!-- /.navbar-toggle /.collapsed -->
-              <span id="mode-switch" class="navbar-brand">
-                <span id="lightbulb"><%
+<!--              <span id="mode-switch" class="navbar-brand">
+                <span id="lightbulb">< %
 if (nightMode) { %>
-                  <span class="bigdot">&bull;</span><%
+                  <span class="bigdot">&bull;</span>< %
 } %>
                   <i class="fa fa-lightbulb-o fa-lg"></i>
-                </span><%
+                </span>< %
 if (nightMode) { %>
-                <i class="fa fa-toggle-off toggle-light"></i><%
+                <i class="fa fa-toggle-off toggle-light"></i>< %
 } else { %>
-                <i class="fa fa-toggle-on"></i><%
+                <i class="fa fa-toggle-on"></i>< %
 } %>
               </span>
+-->
               <a id="app-brand" class="navbar-brand brand-yellow" href="/">UserProfile</a>
             </div><!-- /.navbar-header -->
             <div class="collapse navbar-collapse" id="collapsible-navbar"><%
@@ -69,8 +70,12 @@ if (!currentUser) { %>
                 <li><a href="/user/new">Sign Up</a></li><%
 // else, show the signed-in-as link along with the log-out link
 } else { %>
-                <li><a href="/user/<%= currentUser._id %>">Signed in as <%= currentUser.username %></a></li>
-                <li><img class="nav-avatar" src="<%= currentUser.avatar %>"></li>
+                <li>
+                  <span id="navbar-current-user">
+                    <span class="navbar-text">Signed in as <a class="navbar-link" href="/user/<%= currentUser._id %>"><%= currentUser.username %></a></span>
+                    <a class="navbar-avatar" href="/user/<%= currentUser._id %>"><img class="avatar-icon img-rounded" src="<%= currentUser.avatar %>"></a>
+                  </span> <!-- /#navbar-current-user -->
+                </li><!-- /li -->
                 <li><a href="/user/logout">Log Out</a></li><%
 } %>
               </ul><!-- /.nav /.navbar-nav /.navbar-right -->

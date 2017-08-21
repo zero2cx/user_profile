@@ -19,6 +19,16 @@
  */
 
 /*********************************************************/
+/* declare global-variables */
+var changed = {
+  firstName: false,
+  lastName: false,
+  emailAddress: false,
+  biography: false,
+  avatar: false
+};
+
+/*********************************************************/
 /* declare the dom-elements of the profile-form */
 var imageAvatar = $('#avatar-image');
 var inputAvatarUndo = $('#avatar-undo-input');
@@ -28,11 +38,13 @@ var buttonReinstate = $('#reinstate-button');
 var buttonSuspend = $('#suspend-button');
 var buttonSave = $('#save-button');
 var formProfile = $('#profile-form');
+
 /*********************************************************/
 /* declare the dom-elements of the registration-form */
 var formNewUser = $('#new-user-form');
 var inputPassword = $('#password-input');
 var inputConfirmPassword = $('#confirm-password-input');
+
 /*********************************************************/
 /* declare the dom-elements of the avatar-chooser modal */
 var modalAvatarChooser = $('#avatar-chooser-modal');
@@ -47,24 +59,29 @@ var buttonUploadFile = $('#upload-file-button');
 var inputUploadFile = $('#upload-file-input');
 var buttonLoadUrl = $('#load-url-button');
 var inputLoadUrl = $('#load-url-input');
-/*********************************************************/
-/* declare global-variables */
-var changed = {
-  firstName: false,
-  lastName: false,
-  emailAddress: false,
-  biography: false,
-  avatar: false
-};
+
+/**
+ * validate that the two password inputs are a match to one
+ * another, then submit the form, or else alert the user
+ */
+function submitNewUserForm() {
+  if (inputPassword.val() === inputConfirmPassword.val()) {
+    $(this).form().submit();
+  }
+  else {
+    alert('The passwords do not match.');
+    return false;
+  }
+}
 
 /*********************************************************/
 
 /**
  * when the avatar-image is clicked, show the avatar-chooser modal
  */
-// imageAvatar.on('click ', function() {
-//   chooserAvatar.modal();
-// });
+imageAvatar.on('click', function() {
+  modalAvatarChooser.modal();
+});
 
 /**
  * when the avatar-chooser modal is finished loading,
@@ -250,6 +267,7 @@ $('a.dropdown-submenu').on('click', function(e) {
     $(this).parent().children('ul').toggle(false)
     // console.log($(this));
   }
+  return false;
 });
 
 

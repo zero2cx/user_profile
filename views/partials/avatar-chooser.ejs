@@ -30,10 +30,10 @@ if (uploadFile) { %>
               <div class="modal-body">
                 <img id="load-test-image">
                 <i id="close-modal-button" class="fa fa-close" title="close dialog window" data-dismiss="modal"></i>
-                <div class="dnd-caption">
-                  <i id="dnd-icon" class="fa fa-info-circle info-blue"></i>
-                  <span id="dnd-label">drag an image from the web, then drop it below, or</span>
-                </div><!-- /.cropper-caption -->
+                <div class="drag-and-drop-caption">
+                  <i id="drag-and-drop-icon" class="fa fa-info-circle info-blue"></i>
+                  <span id="drag-and-drop-label">drag an image from the web, then drop it below, or</span>
+                </div><!-- /.drag-and-drop-caption -->
                 <div id="avatar-cropper"><%
 if (uploadFile) { %>
                   <img id="cropper-image" src="<%= uploadFile %>"><%

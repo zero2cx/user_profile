@@ -24,7 +24,7 @@ include ../partials/view-header
 if (currentUser && user.username === currentUser.username && !user.is_suspended) {
   include ../partials/avatar-chooser
 } %>
-        <div class="container profile-container">
+        <div class="container profile-form-container">
           <form id="profile-form" name="profile_form" action="/user/<%= user._id %>" method="POST">
             <div id="username-banner" class="text-center"><%
 // for only a site admin, prefix the admin-badge to the username-label
@@ -36,7 +36,7 @@ if (user.is_admin) { %>
                 <button id="report-button" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
                   <i class="glyphicon glyphicon-flag" title="report this user"></i>
                   <span class="caret"></span>
-                </button>
+                </button><!-- /#report-button -->
                 <ul class="dropdown-menu">
                   <li class="dropdown-header">Report this user</li>
                   <li><a href="#">Inappropriate behavior</a></li>
@@ -45,8 +45,8 @@ if (user.is_admin) { %>
                   <li role="separator" class="divider"></li>
                   <li class="dropdown-header">Review our TOS</li>
                   <li><a href="/terms">Terms Of Service</a></li>
-                </ul>
-              </div><%
+                </ul><!-- /.dropdown-menu -->
+              </div><!-- /.dropdown /.pull-right --><%
 // for only a suspended user, display a notice-banner below the username-banner
 if (user.is_suspended) { %>
               <h3 class="suspended">USER SUSPENDED</h3>
@@ -69,7 +69,7 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
                   <input id="avatar-input" name="user[avatar]" type="hidden" value="<%= user.avatar %>">
                   <h6 class="text-center dimmed">
                     <em>join date: <span id="join-date-banner"><%= user.join_date %></span></em>
-                  </h6><!-- /.text-center -->
+                  </h6><!-- /.text-center /.dimmed -->
                   <div class="text-center"><%
 // for only the site-admin not viewing their own profile, display the appropriate admin-button
 if (currentUser && currentUser.is_admin && user.username !== currentUser.username) {
@@ -83,8 +83,8 @@ if (currentUser && currentUser.is_admin && user.username !== currentUser.usernam
 if (currentUser && user.username === currentUser.username && !user.is_suspended) { %>
                     <button id="save-button" class="profile-button btn btn-primary" onclick="saveProfile()" disabled="disabled">save changes</button><%
 } %>
-                  </div><!-- /.text-center [profile-buttons] -->
-                </div><!-- /.col [left] -->
+                  </div><!-- /.text-center -->
+                </div><!-- /.col -->
                 <div class="col-xs-12 col-sm-8 no-gutter">
                   <div class="form-group">
                     <input id="first-name-undo" type="hidden" value="<%= user.first_name %>">
@@ -98,7 +98,7 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
 } else { %>
                     <input id="first-name-input" class="form-control" type="text" name="user[first_name]" placeholder="first name" value="<%= user.first_name %>" readonly><%
 } %>
-                  </div><!-- /.form-group [first-name] -->
+                  </div><!-- /.form-group -->
                   <div class="form-group">
                     <input id="last-name-undo" type="hidden" value="<%= user.last_name %>">
                     <label for="last-name-input">last name</label>
@@ -111,7 +111,7 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
 } else { %>
                     <input id="last-name-input" class="form-control" type="text" name="user[last_name]" placeholder="last name" value="<%= user.last_name %>" readonly><%
 } %>
-                  </div><!-- /.form-group [last-name] -->
+                  </div><!-- /.form-group -->
                   <div class="form-group">
                     <input id="email-address-undo" type="hidden" value="<%= user.email_address %>">
                     <label for="email-address-input">email address</label>
@@ -124,7 +124,7 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
 } else { %>
                     <input id="email-address-input" class="form-control" type="text" name="user[email_address]" placeholder="email address" value="<%= user.email_address %>" readonly><%
 } %>
-                  </div><!-- /.form-group [email-address] -->
+                  </div><!-- /.form-group -->
                   <div class="form-group">
                     <input id="biography-undo" type="hidden" value="<%= user.biography %>">
                     <label for="biography-input">biography</label>
@@ -137,11 +137,11 @@ if (currentUser && user.username === currentUser.username && !user.is_suspended)
 } else { %>
                     <textarea id="biography-input" class="form-control" rows="4" name="user[biography]" placeholder="biography" readonly><%= user.biography %></textarea><%
 } %>
-                  </div><!-- /.form-group [biography] -->
-                </div><!-- /.col [right] -->
+                  </div><!-- /.form-group -->
+                </div><!-- /.col -->
               </div><!-- /.row -->
             </div><!-- /.profile-content -->
-          </form><!-- /form [profile_form] -->
-        </div><!-- /.container --><%
+          </form><!-- /#profile-form -->
+        </div><!-- /.container /.profile-form-container --><%
 include ../partials/view-footer
 %>

@@ -27,8 +27,8 @@
 /**
  * for site-users viewing their own profile and not suspended, include
  * the uploadFile-trigger for the avatar-chooser modal
- */ %><%
-if (currentUser && user.username === currentUser.username && !user.is_suspended) { %><%
+ */
+if (currentUser && user.username === currentUser.username && !user.is_suspended) {
   if (uploadFile) { %>
         <script type="text/javascript">
           $(document).ready(function(){
