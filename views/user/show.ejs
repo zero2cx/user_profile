@@ -46,16 +46,18 @@ if (user.is_admin) { %>
                   <li class="dropdown-header">Review our TOS</li>
                   <li><a href="/terms">Terms Of Service</a></li>
                 </ul><!-- /.dropdown-menu -->
-              </div><!-- /.dropdown /.pull-right --><%
-// for only a suspended user, display a notice-banner below the username-banner
-if (user.is_suspended) { %>
-              <h3 class="suspended">USER SUSPENDED</h3>
-              <a class="suspended" href="javascript:showViolationNotice()">notice of violation</a><%
-} %>
+              </div><!-- /.dropdown /.pull-right -->
             </div><!-- /.username-banner -->
             <div class="profile-content">
               <div class="row">
-                <div class="col-xs-12 col-sm-4 no-gutter">
+                <div class="col-xs-12 col-sm-4 no-gutter"><%
+// for only a suspended user, display a notice-banner below the username-banner
+if (user.is_suspended) { %>
+                  <div class="suspended-banner text-center">
+                    <div class="suspended">USER SUSPENDED</div>
+                    <a class="suspended" href="javascript:showViolationNotice()">notice of violation</a>
+                  </div><!-- /.suspended-banner --><%
+} %>
                   <div class="avatar-container center-block">
                     <input id="avatar-undo-input" type="hidden" value="<%= user.avatar %>">
                     <i class="undo-button fa fa-undo" title="undo edit" data-target="avatar-image" data-undo="avatar-undo-input" data-changed="avatar"></i><%

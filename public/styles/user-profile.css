@@ -173,6 +173,8 @@ button.btn:focus:active {
 .profile-form-container .suspended {
   margin: 10px auto;
   color: red;
+  line-height: 1;
+  font-size: 1.4em;
 }
 
 .profile-form-container .dimmed {
